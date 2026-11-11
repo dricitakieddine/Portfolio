@@ -52,7 +52,9 @@ if (!isTouch && !prefersReduced) {
 const navbar = $("#navbar");
 const navToggle = $("#navToggle");
 const navMenu = $("#navMenu");
+const navClose = $("#navClose");
 const navLinks = $$(".nav-link");
+const progressWrap = $(".progress-wrap");
 
 let lastScrollY = window.pageYOffset;
 window.addEventListener("scroll", () => {
@@ -65,18 +67,31 @@ window.addEventListener("scroll", () => {
   lastScrollY = window.pageYOffset;
 });
 
+function closeMenu() {
+  navMenu.classList.remove("is-open");
+  navToggle.setAttribute("aria-expanded", "false");
+  document.body.classList.remove("menu-locked");
+  progressWrap.classList.remove("menu-hidden");
+}
+
 // Mobile toggle
 navToggle.addEventListener("click", () => {
   const open = navMenu.classList.toggle("is-open");
   navToggle.setAttribute("aria-expanded", open);
+  document.body.classList.toggle("menu-locked", open);
+  progressWrap.classList.toggle("menu-hidden", open);
 });
+
+// Close button
+if (navClose) {
+  navClose.addEventListener("click", closeMenu);
+}
 
 // Close menu on link click + highlight active section
 const sections = $$("section[id]");
 navLinks.forEach((link) => {
   link.addEventListener("click", () => {
-    navMenu.classList.remove("is-open");
-    navToggle.setAttribute("aria-expanded", "false");
+    closeMenu();
   });
 });
 
