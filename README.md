@@ -3,7 +3,7 @@
 Personal portfolio + CV website for **Takieddine Drici**, Social Media & Community Manager | Content & Automation Specialist.
 
 ## Live site
-https://dricitakieddine.github.io/taki-portfolio/
+https://dricitakieddine.github.io/Portfolio/
 
 ## File structure
 ```
