@@ -1,0 +1,792 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <!-- SITE_URL: change once, updates og:url + schema.org Person url -->
+  <script>
+    window.SITE_URL = "https://dricitakieddine.github.io/taki-portfolio/";
+    document.addEventListener("DOMContentLoaded", () => {
+      const og = document.querySelector('meta[property="og:url"]');
+      if (og) og.content = window.SITE_URL;
+      const json = document.querySelector('script[type="application/ld+json"]');
+      if (json) {
+        try {
+          const data = JSON.parse(json.textContent);
+          data.url = window.SITE_URL;
+          json.textContent = JSON.stringify(data);
+        } catch (e) {}
+      }
+    });
+  </script>
+
+  <meta
+    name="description"
+    content="Takieddine Drici (Taki) — Social Media &amp; Community Manager | Content &amp; Automation Specialist. Building content operations and the technical tools behind them. Remote-first from Tébessa, Algeria."
+  />
+
+  <!-- Open Graph / social preview (update og:url with your GitHub Pages URL before deploying) -->
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://<username>.github.io/<repo>/" />
+  <meta property="og:title" content="Takieddine Drici — Social Media &amp; Automation Specialist" />
+  <meta
+    property="og:description"
+    content="Content creator &amp; automation specialist building content operations and the technical tools behind them. Remote-first from Tébessa, Algeria."
+  />
+  <meta property="og:image" content="assets/photo.png" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="1200" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:image" content="assets/photo.png" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Space+Grotesk:wght@500;600;700;800&display=swap"
+    rel="stylesheet"
+  />
+  <link rel="icon" type="image/png" href="assets/photo.png" />
+  <link rel="apple-touch-icon" type="image/png" href="assets/photo.png" />
+  <title>Takieddine Drici — Social Media &amp; Automation Specialist</title>
+  <link rel="stylesheet" href="style.css" />
+
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Person",
+      "name": "Takieddine Drici",
+      "additionalName": "Taki",
+      "jobTitle": "Social Media &amp; Community Manager | Content &amp; Automation Specialist",
+      "address": {
+        "@type": "PostalAddress",
+        "addressLocality": "Tébessa",
+        "addressCountry": "DZ"
+      },
+      "email": "dricitakieddine75@gmail.com",
+      "telephone": "+213563249255",
+      "url": "https://example.com",
+      "sameAs": ["https://github.com/dricitakieddine"],
+      "knowsAbout": [
+        "content calendars",
+        "short-form video",
+        "copywriting",
+        "community engagement",
+        "REST APIs",
+        "webhooks",
+        "JSON",
+        "Python",
+        "n8n",
+        "automation"
+      ]
+    }
+  </script>
+</head>
+<body>
+  <!-- ===== Intro overlay ===== -->
+  <div id="intro" class="intro">
+    <div class="intro__bg"></div>
+    <div class="intro__logo-wrap">
+      <svg
+        class="intro__draw-ring"
+        id="introDrawRing"
+        viewBox="0 0 120 120"
+        aria-hidden="true"
+      >
+        <circle
+          cx="60"
+          cy="60"
+          r="56"
+          fill="none"
+          stroke="#E10600"
+          stroke-width="2"
+          stroke-dasharray="352"
+          stroke-dashoffset="352"
+        />
+      </svg>
+      <img
+        id="introLogo"
+        src="assets/photo.png"
+        alt="Takieddine Drici logo"
+        class="intro__logo"
+        loading="eager"
+        decoding="async"
+      />
+    </div>
+    <div class="intro__text">Takieddine Drici</div>
+  </div>
+
+  <!-- ===== Scroll progress ===== -->
+  <div class="progress-wrap" aria-hidden="true">
+    <div id="progressBar" class="progress-bar"></div>
+  </div>
+
+  <!-- ===== Skip link ===== -->
+  <a href="#content" class="skip-link">Skip to content</a>
+
+  <!-- ===== Navbar ===== -->
+  <header id="navbar" class="navbar" role="banner">
+    <div class="navbar__inner container">
+      <a href="#" class="navbar__brand" aria-label="Takieddine Drici — home">
+        <img src="assets/photo.png" alt="Logo" class="navbar__logo" loading="eager" decoding="async" />
+        <span class="navbar__wordmark">Takieddine Drici</span>
+      </a>
+
+      <button class="navbar__toggle" id="navToggle" aria-expanded="false" aria-controls="navMenu" aria-label="Open menu">
+        <span class="navbar__toggle-bar"></span>
+        <span class="navbar__toggle-bar"></span>
+        <span class="navbar__toggle-bar"></span>
+      </button>
+
+      <nav id="navMenu" class="navbar__menu" role="navigation">
+        <ul class="navbar__list">
+          <li><a href="#hero" class="nav-link">Home</a></li>
+          <li><a href="#about" class="nav-link">About</a></li>
+          <li><a href="#skills" class="nav-link">Skills</a></li>
+          <li><a href="#experience" class="nav-link">Experience</a></li>
+          <li><a href="#projects" class="nav-link">Projects</a></li>
+          <li><a href="#cv" class="nav-link">CV</a></li>
+          <li><a href="#contact" class="nav-link">Contact</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <!-- ===== Main ===== -->
+  <main id="content" tabindex="-1">
+    <!-- Hero -->
+    <section id="hero" class="section hero" aria-labelledby="hero-heading">
+      <div class="container hero__grid">
+        <div class="hero__content">
+          <span class="hero__kicker">Social Media &amp; Automation</span>
+          <h1 id="hero-heading" class="hero__title">
+            Takieddine <span class="hero__name-red">Drici</span>
+          </h1>
+          <p class="hero__sub">
+            Content creator &amp; online-community builder who also ships the technical
+            tools behind the content. Remote-first from Tébessa, Algeria.
+          </p>
+          <div class="hero__type-wrap">
+            <span class="hero__type-label">Building:</span>
+            <span id="typewriter" class="hero__typewriter" aria-live="polite"></span>
+          </div>
+          <div class="hero__cta">
+            <a href="#projects" class="btn btn--red">View Work</a>
+            <a href="assets/Takieddine_Drici_CV.pdf" class="btn btn--ghost" download>Download CV</a>
+          </div>
+        </div>
+        <div class="hero__portrait-wrap">
+          <div class="hero__glow" aria-hidden="true"></div>
+          <img
+            src="assets/photo.png"
+            alt="Portrait of Takieddine Drici"
+            class="hero__portrait"
+            loading="lazy"
+            decoding="async"
+          />
+        </div>
+      </div>
+    </section>
+
+    <!-- About -->
+    <section id="about" class="section about" aria-labelledby="about-heading">
+      <div class="container">
+        <div class="section__header">
+          <h2 id="about-heading" class="section__title">About <span class="section__title-accent">me</span></h2>
+          <p class="section__desc">A short profile.</p>
+        </div>
+        <div class="about__grid">
+          <div class="about__text">
+            <p class="about__para">
+              Content creator and online-community builder who also ships the technical
+              tools behind the content. I grew an AI/automation brand from scratch,
+              running the content calendar, writing the copy, and building the bots it
+              showcases. Comfortable in developer-facing spaces (APIs, webhooks,
+              automation platforms) and able to turn technical products into content
+              people outside engineering actually want to read and share.
+              Self-directed, remote-first, consistent week after week.
+            </p>
+            <div class="about__meta">
+              <div class="about__meta-item">
+                <span class="about__meta-label">Location</span>
+                <span class="about__meta-value">Tébessa, Algeria (remote-first)</span>
+              </div>
+              <div class="about__meta-item">
+                <span class="about__meta-label">Languages</span>
+                <span class="about__meta-value">Arabic (Native) · English (Professional Working) · French (Basic)</span>
+              </div>
+              <div class="about__meta-item">
+                <span class="about__meta-label">Email</span>
+                <span class="about__meta-value">dricitakieddine75@gmail.com</span>
+              </div>
+              <div class="about__meta-item">
+                <span class="about__meta-label">WhatsApp</span>
+                <span class="about__meta-value">+213 563 249 255</span>
+              </div>
+            </div>
+          </div>
+          <div class="about__facts">
+            <div class="fact" data-fact>
+              <span class="fact__number" data-count>6</span><span class="fact__suffix"></span>
+              <span class="fact__label">projects (3 live builds + 3 concept demos)</span>
+            </div>
+            <div class="fact" data-fact>
+              <span class="fact__number" data-count>2025</span><span class="fact__suffix"></span>
+              <span class="fact__label">started independent practice</span>
+            </div>
+            <div class="fact" data-fact>
+              <span class="fact__number" data-count="3">3</span><span class="fact__suffix"></span>
+              <span class="fact__label">languages</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Skills -->
+    <section id="skills" class="section skills" aria-labelledby="skills-heading">
+      <div class="container">
+        <div class="section__header">
+          <h2 id="skills-heading" class="section__title">Skills <span class="section__title-accent">&amp; tools</span></h2>
+          <p class="section__desc">Grouped by Content, Technical, and Tools.</p>
+        </div>
+        <div class="skills__groups">
+          <div class="skills__group" data-group>
+            <h3 class="skills__group-title">Content &amp; Community</h3>
+            <ul class="skills__chips">
+              <li><span class="chip">Content calendars</span></li>
+              <li><span class="chip">Short-form / faceless video</span></li>
+              <li><span class="chip">Copywriting</span></li>
+              <li><span class="chip">Audience &amp; prospect research</span></li>
+              <li><span class="chip">Community engagement</span></li>
+            </ul>
+          </div>
+          <div class="skills__group" data-group>
+            <h3 class="skills__group-title">Technical</h3>
+            <ul class="skills__chips">
+              <li><span class="chip">REST APIs</span></li>
+              <li><span class="chip">Webhooks</span></li>
+              <li><span class="chip">JSON</span></li>
+              <li><span class="chip">Python</span></li>
+              <li><span class="chip">n8n workflow automation</span></li>
+            </ul>
+          </div>
+          <div class="skills__group" data-group>
+            <h3 class="skills__group-title">Tools</h3>
+            <ul class="skills__chips">
+              <li><span class="chip">Microsoft Excel</span></li>
+              <li><span class="chip">Google Sheets</span></li>
+              <li><span class="chip">Canva</span></li>
+              <li><span class="chip">Microsoft Office</span></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Experience -->
+    <section id="experience" class="section experience" aria-labelledby="experience-heading">
+      <div class="container">
+        <div class="section__header">
+          <h2 id="experience-heading" class="section__title">Experience <span class="section__title-accent">&amp; work</span></h2>
+          <p class="section__desc">A vertical timeline of what I've done.</p>
+        </div>
+        <div class="timeline" id="timeline">
+          <div class="timeline__line" aria-hidden="true"></div>
+          <div class="timeline__item" data-timeline-item>
+            <time class="timeline__date">2025 – Present</time>
+            <div class="timeline__card">
+              <h3 class="timeline__role">Founder / Content &amp; Automation Lead</h3>
+              <p class="timeline__org">Independent · 2025 – Present</p>
+              <ul class="timeline__bullets">
+                <li>Built and ran a social content operation from the ground up: 30-day content calendar, faceless short-form video strategy, ongoing posting cadence for an AI/automation audience.</li>
+                <li>Researched and scored target accounts/prospects to sharpen who the content is for.</li>
+                <li>Wrote all marketing and product copy in-house (brand voice, product descriptions, promotions).</li>
+                <li>Designed and shipped working automations and bots (n8n, Python, REST APIs) so the content is backed by real, demoable tools.</li>
+                <li>Explained technical workflows in plain language.</li>
+              </ul>
+            </div>
+          </div>
+          <div class="timeline__item" data-timeline-item>
+            <time class="timeline__date">2026 – Present</time>
+            <div class="timeline__card">
+              <h3 class="timeline__role">Data &amp; Workflow Quality Specialist</h3>
+              <p class="timeline__org">Independent Projects</p>
+              <ul class="timeline__bullets">
+                <li>Reviewed and structured business data and processes across connected systems (APIs, spreadsheets, automation tools), maintaining accuracy under deadline.</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Projects -->
+    <section id="projects" class="section projects" aria-labelledby="projects-heading">
+      <div class="container">
+        <div class="section__header">
+          <h2 id="projects-heading" class="section__title">Projects <span class="section__title-accent">&amp; portfolio</span></h2>
+          <p class="section__desc">Real builds and concept demos are labeled clearly.</p>
+        </div>
+        <div class="projects__grid" id="projectsGrid">
+          <article class="project-card" data-tilt data-modal="projectModal">
+            <div class="project__thumb-wrap">
+              <svg class="project__thumb project__thumb--workflow" viewBox="0 0 100 60" aria-label="Calendar workflow preview">
+                <rect x="10" y="7" w="80" h="10" rx="2" fill="none" stroke="#333" />
+                <line x1="30" y1="24" x2="70" y2="24" stroke="#333" stroke-width="1.5" />
+                <line x1="30" y1="40" x2="70" y2="40" stroke="#333" stroke-width="1.5" />
+                <line x1="30" y1="24" x2="30" y2="40" stroke="#333" stroke-width="1.5" />
+                <line x1="50" y1="24" x2="50" y2="40" stroke="#333" stroke-width="1.5" />
+                <line x1="70" y1="24" x2="70" y2="40" stroke="#333" stroke-width="1.5" />
+                <circle cx="30" cy="24" r="2.5" fill="#E10600" />
+                <circle cx="50" cy="24" r="2.5" fill="#E10600" />
+                <circle cx="70" cy="24" r="2.5" fill="#E10600" />
+                <circle cx="30" cy="40" r="2.5" fill="#E10600" />
+                <circle cx="50" cy="40" r="2.5" fill="#E10600" />
+                <circle cx="70" cy="40" r="2.5" fill="#E10600" />
+              </svg>
+              <div class="project__overlay">
+                <span class="project__view">View case →</span>
+              </div>
+            </div>
+            <div class="project__body">
+              <h3 class="project__title">AI Google Calendar Assistant</h3>
+              <p class="project__desc">Scheduling automation that validates calendar data and triggers confirmations.</p>
+              <div class="project__tags">
+                <span class="tag">n8n</span>
+                <span class="tag">OpenAI</span>
+                <span class="tag">Google Calendar API</span>
+              </div>
+              <button class="btn btn--ghost btn--small project__details" type="button"
+                data-title="AI Google Calendar Assistant"
+                data-problem="Scheduling across systems was manual and error-prone; calendar data needed validation before any confirmation could be sent."
+                data-solution="An n8n + OpenAI + Google Calendar API automation that validates calendar data and triggers confirmations, so the content is backed by a real, demoable tool."
+                data-tools="n8n · OpenAI · Google Calendar API"
+                data-result="Working scheduling automation that validates calendar data and triggers confirmations.">
+                View details
+              </button>
+            </div>
+          </article>
+
+          <article class="project-card" data-tilt data-modal="projectModal">
+            <div class="project__thumb-wrap">
+              <svg class="project__thumb project__thumb--workflow" viewBox="0 0 100 60" aria-label="Chat workflow preview">
+                <path d="M12 22 h36 a4 4 0 0 1 4 4 v18 a4 4 0 0 1 -4 4 h-36 a4 4 0 0 1 -4 -4 v-18 a4 4 0 0 1 4 -4 z" fill="none" stroke="#333" stroke-width="1.5" />
+                <path d="M52 14 h36 a4 4 0 0 1 4 4 v18 a4 4 0 0 1 -4 4 h-36 a4 4 0 0 1 -4 -4 v-18 a4 4 0 0 1 4 -4 z" fill="none" stroke="#E10600" stroke-width="1.5" />
+                <line x1="28" y1="34" x2="68" y2="22" stroke="#333" stroke-width="1.5" />
+                <circle cx="28" cy="34" r="2.5" fill="#E10600" />
+                <circle cx="68" cy="22" r="2.5" fill="#E10600" />
+              </svg>
+              <div class="project__overlay">
+                <span class="project__view">View case →</span>
+              </div>
+            </div>
+            <div class="project__body">
+              <h3 class="project__title">Personal AI Telegram Assistant</h3>
+              <p class="project__desc">Bot that processes text and voice messages and triggers rule-based actions.</p>
+              <div class="project__tags">
+                <span class="tag">Telegram API</span>
+                <span class="tag">OpenAI</span>
+                <span class="tag">n8n</span>
+              </div>
+              <button class="btn btn--ghost btn--small project__details" type="button"
+                data-title="Personal AI Telegram Assistant"
+                data-problem="Handling text and voice messages manually across Telegram was slow and inconsistent."
+                data-solution="A Telegram bot that processes text and voice messages and triggers rule-based actions, built with the Telegram API, OpenAI and n8n."
+                data-tools="Telegram API · OpenAI · n8n"
+                data-result="Automated inbound-message handling that triggers actions without manual work.">
+                View details
+              </button>
+            </div>
+          </article>
+
+          <article class="project-card" data-tilt data-modal="projectModal">
+            <div class="project__thumb-wrap">
+              <svg class="project__thumb project__thumb--workflow" viewBox="0 0 100 60" aria-label="Content grid workflow preview">
+                <rect x="12" y="14" w="20" h="16" rx="1" fill="none" stroke="#333" stroke-width="1.5" />
+                <rect x="40" y="14" w="20" h="16" rx="1" fill="none" stroke="#333" stroke-width="1.5" />
+                <rect x="68" y="14" w="20" h="16" rx="1" fill="none" stroke="#333" stroke-width="1.5" />
+                <rect x="12" y="30" w="20" h="16" rx="1" fill="none" stroke="#333" stroke-width="1.5" />
+                <rect x="40" y="30" w="20" h="16" rx="1" fill="none" stroke="#333" stroke-width="1.5" />
+                <rect x="68" y="30" w="20" h="16" rx="1" fill="none" stroke="#333" stroke-width="1.5" />
+                <line x1="22" y1="38" x2="50" y2="38" stroke="#333" stroke-width="1.5" />
+                <line x1="50" y1="38" x2="78" y2="38" stroke="#333" stroke-width="1.5" />
+                <line x1="22" y1="22" x2="22" y2="38" stroke="#333" stroke-width="1.5" />
+                <circle cx="22" cy="22" r="2.5" fill="#E10600" />
+                <circle cx="22" cy="38" r="2.5" fill="#E10600" />
+                <circle cx="50" cy="38" r="2.5" fill="#E10600" />
+                <circle cx="78" cy="38" r="2.5" fill="#E10600" />
+              </svg>
+              <div class="project__overlay">
+                <span class="project__view">View case →</span>
+              </div>
+            </div>
+            <div class="project__body">
+              <h3 class="project__title">Instagram Content &amp; Growth System</h3>
+              <p class="project__desc">30-day calendar and faceless content strategy for an AI-tools audience.</p>
+              <div class="project__tags">
+                <span class="tag">Canva</span>
+                <span class="tag">Content calendar</span>
+                <span class="tag">Audience research</span>
+              </div>
+              <button class="btn btn--ghost btn--small project__details" type="button"
+                data-title="Instagram Content &amp; Growth System"
+                data-problem="Growing an AI-tools audience from zero needed a consistent publishing rhythm and a faceless content format."
+                data-solution="A 30-day Canva content calendar paired with audience research and a faceless short-form content strategy."
+                data-tools="Canva · Content calendar · Audience research"
+                data-result="A repeatable 30-day posting system for an AI-tools audience.">
+                View details
+              </button>
+            </div>
+          </article>
+
+          <!-- Concept demos -->
+          <article class="project-card" data-tilt data-modal="projectModal">
+            <div class="project__thumb-wrap">
+              <svg class="project__thumb project__thumb--workflow" viewBox="0 0 100 60" aria-label="WhatsApp auto-reply workflow preview">
+                <path d="M12 22 h30 a4 4 0 0 1 4 4 v14 a4 4 0 0 1 -4 4 h-30 a4 4 0 0 1 -4 -4 v-14 a4 4 0 0 1 4 -4 z" fill="none" stroke="#333" stroke-width="1.5" />
+                <line x1="48" y1="29" x2="56" y2="29" stroke="#333" stroke-width="1.5" />
+                <circle cx="64" cy="29" r="3" fill="#E10600" />
+                <line x1="72" y1="29" x2="80" y2="40" stroke="#333" stroke-width="1.5" />
+                <path d="M88 34 h-30 a4 4 0 0 1 -4 -4 v-12 a4 4 0 0 1 4 -4 h30 a4 4 0 0 1 4 4 v12 a4 4 0 0 1 -4 4 z" fill="none" stroke="#333" stroke-width="1.5" />
+                <circle cx="80" cy="29" r="2.5" fill="#E10600" />
+              </svg>
+              <div class="project__overlay">
+                <span class="project__view">View case →</span>
+              </div>
+            </div>
+            <div class="project__body">
+              <span class="project__badge">Concept Demo</span>
+              <h3 class="project__title">WhatsApp Lead Auto-Reply</h3>
+              <p class="project__desc">Concept demo: an auto-reply workflow for inbound WhatsApp leads.</p>
+              <div class="project__tags">
+                <span class="tag">n8n</span>
+                <span class="tag">WhatsApp</span>
+              </div>
+              <button class="btn btn--ghost btn--small project__details" type="button"
+                data-title="WhatsApp Lead Auto-Reply (Concept Demo)"
+                data-problem="Inbound WhatsApp leads sit unanswered until a person replies manually, which slows response time."
+                data-solution="A concept n8n workflow that detects an inbound message and sends an instant auto-reply with next steps."
+                data-tools="n8n · WhatsApp"
+                data-result="Concept demo only — no live results claimed.">
+                View details
+              </button>
+            </div>
+          </article>
+
+          <article class="project-card" data-tilt data-modal="projectModal">
+            <div class="project__thumb-wrap">
+              <svg class="project__thumb project__thumb--workflow" viewBox="0 0 100 60" aria-label="Invoice reminder workflow preview">
+                <rect x="12" y="20" w="24" h="20" rx="2" fill="none" stroke="#333" stroke-width="1.5" />
+                <line x1="36" y1="25" x2="36" y2="35" stroke="#333" stroke-width="1.5" />
+                <line x1="36" y1="20" x2="36" y2="40" stroke="#333" stroke-width="1.5" />
+                <line x1="44" y1="29" x2="56" y2="29" stroke="#333" stroke-width="1.5" />
+                <circle cx="64" cy="29" r="3" fill="#E10600" />
+                <line x1="72" y1="29" x2="84" y2="29" stroke="#333" stroke-width="1.5" />
+                <path d="M92 22 h-14 a4 4 0 0 1 -4 -4 v-4 a4 4 0 0 1 4 -4 h14 a4 4 0 0 1 4 4 v4 a4 4 0 0 1 -4 4 z" fill="none" stroke="#333" stroke-width="1.5" />
+                <circle cx="92" cy="29" r="2.5" fill="#E10600" />
+              </svg>
+              <div class="project__overlay">
+                <span class="project__view">View case →</span>
+              </div>
+            </div>
+            <div class="project__body">
+              <span class="project__badge">Concept Demo</span>
+              <h3 class="project__title">Invoice Reminder Automation</h3>
+              <p class="project__desc">Concept demo: an n8n + Google Sheets automation that flags overdue invoices.</p>
+              <div class="project__tags">
+                <span class="tag">n8n</span>
+                <span class="tag">Google Sheets</span>
+              </div>
+              <button class="btn btn--ghost btn--small project__details" type="button"
+                data-title="Invoice Reminder Automation (Concept Demo)"
+                data-problem="Overdue invoices are tracked in a spreadsheet but no reminder is sent when payment is late."
+                data-solution="A concept n8n workflow that reads a Google Sheets invoice log and flags overdue items for follow-up."
+                data-tools="n8n · Google Sheets"
+                data-result="Concept demo only — no live results claimed.">
+                View details
+              </button>
+            </div>
+          </article>
+
+          <article class="project-card" data-tilt data-modal="projectModal">
+            <div class="project__thumb-wrap">
+              <svg class="project__thumb project__thumb--workflow" viewBox="0 0 100 60" aria-label="Content report workflow preview">
+                <rect x="12" y="20" w="24" h="20" rx="2" fill="none" stroke="#333" stroke-width="1.5" />
+                <line x1="36" y1="30" x2="46" y2="30" stroke="#333" stroke-width="1.5" />
+                <circle cx="54" cy="30" r="3" fill="#E10600" />
+                <line x1="62" y1="30" x2="72" y2="20" stroke="#333" stroke-width="1.5" />
+                <line x1="72" y1="20" x2="72" y2="40" stroke="#333" stroke-width="1.5" />
+                <rect x="80" y="22" w="18" h="16" rx="2" fill="none" stroke="#333" stroke-width="1.5" />
+                <circle cx="80" cy="30" r="2.5" fill="#E10600" />
+              </svg>
+              <div class="project__overlay">
+                <span class="project__view">View case →</span>
+              </div>
+            </div>
+            <div class="project__body">
+              <span class="project__badge">Concept Demo</span>
+              <h3 class="project__title">Weekly Content Report Generator</h3>
+              <p class="project__desc">Concept demo: a Python script that compiles a weekly content performance report into Google Sheets.</p>
+              <div class="project__tags">
+                <span class="tag">Python</span>
+                <span class="tag">Google Sheets</span>
+              </div>
+              <button class="btn btn--ghost btn--small project__details" type="button"
+                data-title="Weekly Content Report Generator (Concept Demo)"
+                data-problem="Content performance data lives across platforms and is not compiled into a single weekly summary."
+                data-solution="A concept Python script that pulls content metrics and writes a weekly report into Google Sheets."
+                data-tools="Python · Google Sheets"
+                data-result="Concept demo only — no live results claimed.">
+                View details
+              </button>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- Project detail modal -->
+    <div id="projectModal" class="modal" role="dialog" aria-modal="true" aria-hidden="true">
+      <div class="modal__overlay" id="modalOverlay"></div>
+      <div class="modal__content">
+        <button class="modal__close" id="modalClose" aria-label="Close details">×</button>
+        <h2 class="modal__title" id="modalTitle"></h2>
+        <div class="modal__grid">
+          <div class="modal__col">
+            <h4 class="modal__label">Problem</h4>
+            <p class="modal__text" id="modalProblem"></p>
+          </div>
+          <div class="modal__col">
+            <h4 class="modal__label">Solution</h4>
+            <p class="modal__text" id="modalSolution"></p>
+          </div>
+        </div>
+        <div class="modal__row">
+          <h4 class="modal__label">Tools used</h4>
+          <p class="modal__text" id="modalTools"></p>
+        </div>
+        <div class="modal__row">
+          <h4 class="modal__label">Result</h4>
+          <p class="modal__text" id="modalResult"></p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Certifications & Education -->
+    <section id="credentials" class="section credentials" aria-labelledby="credentials-heading">
+      <div class="container">
+        <div class="section__header">
+          <h2 id="credentials-heading" class="section__title">Certifications <span class="section__title-accent">&amp; education</span></h2>
+          <p class="section__desc">Minimal cards.</p>
+        </div>
+        <div class="credentials__grid">
+          <article class="cred-card">
+            <h3 class="cred-card__title">AI for Business Professionals</h3>
+            <p class="cred-card__org">HP LIFE</p>
+          </article>
+          <article class="cred-card">
+            <h3 class="cred-card__title">Introduction to Generative AI</h3>
+            <p class="cred-card__org">Google Cloud</p>
+          </article>
+          <article class="cred-card">
+            <h3 class="cred-card__title">Creative Thinking in Business</h3>
+            <p class="cred-card__org">Edraak</p>
+          </article>
+          <article class="cred-card cred-card--edu">
+            <h3 class="cred-card__title">Bachelor's studies — Mechanical Engineering</h3>
+            <p class="cred-card__org">Ferhat Abbas Sétif 1 University · 2022 – Present</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- CV -->
+    <section id="cv" class="section cv" aria-labelledby="cv-heading">
+      <div class="container">
+        <div class="section__header">
+          <h2 id="cv-heading" class="section__title">Curriculum <span class="section__title-accent">Vitae</span></h2>
+          <p class="section__desc">Web version + PDF download.</p>
+        </div>
+        <div class="cv__wrap">
+          <div class="cv__content">
+            <div class="cv__header">
+              <div class="cv__avatar-wrap">
+                <img src="assets/photo.png" alt="CV photo" class="cv__avatar" loading="lazy" decoding="async" />
+              </div>
+              <div>
+                <h1 class="cv__name">Takieddine Drici</h1>
+                <p class="cv__title">Social Media &amp; Community Manager | Content &amp; Automation Specialist</p>
+                <p class="cv__contact">
+                  Tébessa, Algeria (remote-first) ·
+                  <a href="mailto:dricitakieddine75@gmail.com" class="cv__link">dricitakieddine75@gmail.com</a> ·
+                  <a href="https://wa.me/213563249255" class="cv__link">+213 563 249 255</a> ·
+                  <a href="https://github.com/dricitakieddine" class="cv__link">github.com/dricitakieddine</a>
+                </p>
+              </div>
+            </div>
+            <div class="cv__body">
+              <div class="cv__col">
+                <h3 class="cv__section">Profile</h3>
+                <p class="cv__para">
+                  Content creator and online-community builder who also ships the technical
+                  tools behind the content. Grew an AI/automation brand from scratch,
+                  running the content calendar, writing the copy, and building the bots
+                  it showcases.
+                </p>
+                <h3 class="cv__section">Experience</h3>
+                <div class="cv__job">
+                  <h4 class="cv__job-role">Founder / Content &amp; Automation Lead</h4>
+                  <p class="cv__job-org">Independent · 2025 – Present</p>
+                  <ul class="cv__list">
+                    <li>Built and ran a social content operation from the ground up.</li>
+                    <li>Researched and scored target accounts/prospects.</li>
+                    <li>Wrote all marketing and product copy in-house.</li>
+                    <li>Designed and shipped automations and bots (n8n, Python, REST APIs).</li>
+                    <li>Explained technical workflows in plain language.</li>
+                  </ul>
+                </div>
+                <div class="cv__job">
+                  <h4 class="cv__job-role">Data &amp; Workflow Quality Specialist</h4>
+                  <p class="cv__job-org">Independent Projects · 2026 – Present</p>
+                  <ul class="cv__list">
+                    <li>Reviewed and structured business data and processes across connected systems.</li>
+                  </ul>
+                </div>
+                <h3 class="cv__section">Projects</h3>
+                <ul class="cv__list cv__list--tight">
+                  <li><strong>AI Google Calendar Assistant</strong> — n8n, OpenAI, Google Calendar API.</li>
+                  <li><strong>Personal AI Telegram Assistant</strong> — Telegram API, OpenAI, n8n.</li>
+                  <li><strong>Instagram Content &amp; Growth System</strong> — Canva, content calendar, audience research.</li>
+                </ul>
+              </div>
+              <div class="cv__col cv__col--side">
+                <h3 class="cv__section">Core skills</h3>
+                <ul class="cv__list cv__list--tight">
+                  <li>Content calendars · short-form video · copywriting · community engagement</li>
+                  <li>REST APIs · Webhooks · JSON · Python · n8n</li>
+                  <li>Excel · Google Sheets · Canva · Microsoft Office · documentation</li>
+                </ul>
+                <h3 class="cv__section">Certifications</h3>
+                <ul class="cv__list cv__list--tight">
+                  <li>AI for Business Professionals — HP LIFE</li>
+                  <li>Introduction to Generative AI — Google Cloud</li>
+                  <li>Creative Thinking in Business — Edraak</li>
+                </ul>
+                <h3 class="cv__section">Education</h3>
+                <p class="cv__para">Ferhat Abbas Sétif 1 University — Mechanical Engineering (2022 – Present)</p>
+                <h3 class="cv__section">Languages</h3>
+                <ul class="cv__list cv__list--tight">
+                  <li>Arabic (Native)</li>
+                  <li>English (Professional Working)</li>
+                  <li>French (Basic)</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+          <div class="cv__actions">
+            <a href="assets/Takieddine_Drici_CV.pdf" class="btn btn--red btn--large" download>Download PDF CV</a>
+            <p class="cv__note">Print-friendly. Open the PDF to save or print your own copy.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Services -->
+    <section id="services" class="section services" aria-labelledby="services-heading">
+      <div class="container">
+        <div class="section__header">
+          <h2 id="services-heading" class="section__title">Services <span class="section__title-accent">I offer</span></h2>
+          <p class="section__desc">Minimal, focused, remote-first.</p>
+        </div>
+        <div class="services__grid">
+          <article class="service-card">
+            <h3 class="service__title">AI Automation (n8n)</h3>
+            <p class="service__tags">n8n · Python · REST APIs · Webhooks · JSON</p>
+            <p class="service__desc">I design and ship working automations and bots that back real content — not just demos.</p>
+          </article>
+          <article class="service-card">
+            <h3 class="service__title">Social Media Management</h3>
+            <p class="service__tags">Content calendars · short-form/faceless video · community engagement</p>
+            <p class="service__desc">Instagram, Reddit, Telegram and Discord-style communities, run week after week.</p>
+          </article>
+          <article class="service-card">
+            <h3 class="service__title">Content &amp; Copywriting</h3>
+            <p class="service__tags">Copywriting · Content calendars</p>
+            <p class="service__desc">Turns technical products into clear copy people want to read and share.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- Contact -->
+    <section id="contact" class="section contact" aria-labelledby="contact-heading">
+      <div class="container">
+        <div class="section__header">
+          <h2 id="contact-heading" class="section__title">Get in <span class="section__title-accent">touch</span></h2>
+          <p class="section__desc">Email, WhatsApp, or GitHub — or use the form below.</p>
+        </div>
+        <div class="contact__grid">
+          <div class="contact__buttons">
+            <a href="mailto:dricitakieddine75@gmail.com" class="contact__btn" data-toast>
+              <span class="contact__btn-icon">✉</span>
+              <span class="contact__btn-label">Email me</span>
+            </a>
+            <a href="https://wa.me/213563249255" class="contact__btn contact__btn--wa" target="_blank" rel="noopener">
+              <span class="contact__btn-icon">💬</span>
+              <span class="contact__btn-label">WhatsApp</span>
+            </a>
+            <a href="https://github.com/dricitakieddine" class="contact__btn contact__btn--gh" target="_blank" rel="noopener">
+              <span class="contact__btn-icon">🐙</span>
+              <span class="contact__btn-label">GitHub</span>
+            </a>
+            <button class="contact__btn contact__btn--copy" id="copyEmail">
+              <span class="contact__btn-icon">📋</span>
+              <span class="contact__btn-label">Copy email</span>
+            </button>
+          </div>
+          <div class="contact__form-wrap">
+            <form id="contactForm" class="contact__form" novalidate>
+              <div class="form__row">
+                <label for="cfName" class="form__label">Name</label>
+                <input type="text" id="cfName" name="name" class="form__input" required placeholder="Your name" />
+              </div>
+              <div class="form__row">
+                <label for="cfEmail" class="form__label">Email</label>
+                <input type="email" id="cfEmail" name="email" class="form__input" required placeholder="you@example.com" />
+              </div>
+              <div class="form__row">
+                <label for="cfMessage" class="form__label">Message</label>
+                <textarea id="cfMessage" name="message" class="form__textarea" required rows="5" placeholder="What's on your mind?"></textarea>
+              </div>
+              <button type="submit" class="btn btn--red btn--block">Open email</button>
+            </form>
+            <p class="form__note">No backend — opens your default email client with your message pre-filled.</p>
+          </div>
+        </div>
+        <div id="toast" class="toast" role="alert" aria-live="polite">Email copied to clipboard</div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer class="footer" role="contentinfo">
+    <div class="container footer__inner">
+      <div class="footer__brand">
+        <img src="assets/photo.png" alt="Logo" class="footer__logo" loading="lazy" decoding="async" />
+        <span class="footer__wordmark">Takieddine Drici</span>
+      </div>
+      <p class="footer__copy">© 2026 Takieddine Drici. All rights reserved.</p>
+      <p class="footer__note">Built with plain HTML, CSS &amp; JS.</p>
+    </div>
+  </footer>
+
+  <!-- Custom cursor -->
+  <div id="cursor" class="cursor" aria-hidden="true"></div>
+  <div id="cursorFollower" class="cursor-follower" aria-hidden="true"></div>
+
+  <!-- GSAP + ScrollTrigger -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js" defer></script>
+  <script src="script.js" defer></script>
+</body>
+</html>
