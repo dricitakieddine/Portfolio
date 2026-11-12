@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+
+  <script>
+    window.SITE_URL = "https://dricitakieddine.github.io/Portfolio/";
+    document.addEventListener("DOMContentLoaded", () => {
+      const og = document.querySelector('meta[property="og:url"]');
+      if (og) og.content = window.SITE_URL + "404.html";
+      const canon = document.querySelector('link[rel="canonical"]');
+      if (canon) canon.href = window.SITE_URL + "404.html";
+    });
+  </script>
+
+  <meta name="description" content="Page not found — Takieddine Drici portfolio." />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://dricitakieddine.github.io/Portfolio/404.html" />
+  <meta property="og:title" content="404 — Takieddine Drici" />
+  <meta property="og:image" content="assets/photo.png" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:image" content="assets/photo.png" />
+
+  <link rel="canonical" href="https://dricitakieddine.github.io/Portfolio/404.html" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Space+Grotesk:wght@500;600;700;800&display=swap"
+    rel="stylesheet"
+  />
+  <link rel="icon" type="image/png" href="assets/photo.png" />
+  <link rel="apple-touch-icon" type="image/png" href="assets/photo.png" />
+  <title>404 — Takieddine Drici</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="page-transition">
+    <div class="page-transition__wipe"></div>
+  </div>
+
+  <div id="intro" class="intro">
+    <div class="intro__bg"></div>
+    <div class="intro__logo-wrap">
+      <svg
+        class="intro__draw-ring"
+        id="introDrawRing"
+        viewBox="0 0 120 120"
+        aria-hidden="true"
+      >
+        <circle
+          cx="60"
+          cy="60"
+          r="56"
+          fill="none"
+          stroke="#E10600"
+          stroke-width="2"
+          stroke-dasharray="352"
+          stroke-dashoffset="352"
+        />
+      </svg>
+      <img
+        id="introLogo"
+        src="assets/photo.png"
+        alt="Takieddine Drici logo"
+        class="intro__logo"
+        width="120"
+        height="120"
+        loading="eager"
+        decoding="async"
+      />
+    </div>
+    <div class="intro__text">Takieddine Drici</div>
+  </div>
+
+  <div class="progress-wrap" aria-hidden="true">
+    <div id="progressBar" class="progress-bar"></div>
+  </div>
+
+  <a href="#content" class="skip-link">Skip to content</a>
+
+  <header id="navbar" class="navbar" role="banner">
+    <div class="navbar__inner container">
+      <a href="index.html" class="navbar__brand" aria-label="Takieddine Drici — home">
+        <img src="assets/photo.png" alt="Logo" class="navbar__logo" width="36" height="36" loading="eager" decoding="async" />
+        <span class="navbar__wordmark">Takieddine Drici</span>
+      </a>
+
+      <button class="navbar__toggle" id="navToggle" aria-expanded="false" aria-controls="navMenu" aria-label="Open menu">
+        <span class="navbar__toggle-bar"></span>
+        <span class="navbar__toggle-bar"></span>
+        <span class="navbar__toggle-bar"></span>
+      </button>
+
+      <nav id="navMenu" class="navbar__menu" role="navigation">
+        <div class="navbar__menu-top">
+          <div class="navbar__menu-brand">
+            <img src="assets/photo.png" alt="Logo" class="navbar__menu-logo" width="36" height="36" loading="eager" decoding="async" />
+            <span class="navbar__menu-wordmark">Takieddine Drici</span>
+          </div>
+          <button class="navbar__close" id="navClose" aria-label="Close menu">×</button>
+        </div>
+        <ul class="navbar__list">
+          <li><a href="skills.html" class="nav-link">Skills</a></li>
+          <li><a href="experience.html" class="nav-link">Experience</a></li>
+          <li><a href="projects.html" class="nav-link">Projects</a></li>
+          <li><a href="cv.html" class="nav-link">CV</a></li>
+          <li><a href="contact.html" class="nav-link">Contact</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main id="content" tabindex="-1">
+    <section class="section not-found" aria-labelledby="nf-heading">
+      <div class="container">
+        <div class="page-title__line" style="max-width:200px; margin:0 auto 2rem;"></div>
+        <div class="not-found__code">404</div>
+        <h2 id="nf-heading" class="not-found__title">Page not found</h2>
+        <p class="not-found__desc">This page doesn't exist, but I do. Head home and let's build something.</p>
+        <a href="index.html" class="btn btn--red">Go home</a>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer" role="contentinfo">
+    <div class="container footer__inner">
+      <div class="footer__brand">
+        <img src="assets/photo.png" alt="Logo" class="footer__logo" width="32" height="32" loading="lazy" decoding="async" />
+        <span class="footer__wordmark">Takieddine Drici</span>
+      </div>
+      <p class="footer__copy">© 2026 Takieddine Drici. All rights reserved.</p>
+      <p class="footer__note">Built with plain HTML, CSS &amp; JS.</p>
+    </div>
+  </footer>
+
+  <div id="cursor" class="cursor" aria-hidden="true"></div>
+  <div id="cursorFollower" class="cursor-follower" aria-hidden="true"></div>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js" defer></script>
+  <script src="script.js" defer></script>
+</body>
+</html>

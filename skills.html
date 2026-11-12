@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+
+  <script>
+    window.SITE_URL = "https://dricitakieddine.github.io/Portfolio/";
+    document.addEventListener("DOMContentLoaded", () => {
+      const og = document.querySelector('meta[property="og:url"]');
+      if (og) og.content = window.SITE_URL + "skills.html";
+      const canon = document.querySelector('link[rel="canonical"]');
+      if (canon) canon.href = window.SITE_URL + "skills.html";
+      const json = document.querySelector('script[type="application/ld+json"]');
+      if (json) {
+        try {
+          const data = JSON.parse(json.textContent);
+          data.url = window.SITE_URL + "skills.html";
+          json.textContent = JSON.stringify(data);
+        } catch (e) {}
+      }
+    });
+  </script>
+
+  <meta
+    name="description"
+    content="Takieddine Drici — Skills. Automation (n8n, REST APIs, webhooks, JSON), AI (OpenAI API, AI Agents, Prompt Engineering), Development (Python, Git/GitHub), Tools & Integrations (Google Sheets, Google Calendar API, Telegram API)."
+  />
+
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://dricitakieddine.github.io/Portfolio/skills.html" />
+  <meta property="og:title" content="Skills — Takieddine Drici" />
+  <meta
+    property="og:description"
+    content="Grouped skills: Automation, AI, Development, Tools & Integrations."
+  />
+  <meta property="og:image" content="assets/photo.png" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:image" content="assets/photo.png" />
+
+  <link rel="canonical" href="https://dricitakieddine.github.io/Portfolio/skills.html" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Space+Grotesk:wght@500;600;700;800&display=swap"
+    rel="stylesheet"
+  />
+  <link rel="icon" type="image/png" href="assets/photo.png" />
+  <link rel="apple-touch-icon" type="image/png" href="assets/photo.png" />
+  <title>Skills — Takieddine Drici</title>
+  <link rel="stylesheet" href="style.css" />
+
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Person",
+      "name": "Takieddine Drici",
+      "additionalName": "Taki",
+      "jobTitle": "AI Automation Engineer",
+      "url": "https://dricitakieddine.github.io/Portfolio/skills.html",
+      "sameAs": ["https://github.com/dricitakieddine"],
+      "knowsAbout": [
+        "n8n",
+        "workflow automation",
+        "webhooks",
+        "REST APIs",
+        "API integration",
+        "JSON",
+        "OpenAI API",
+        "AI agents",
+        "prompt engineering",
+        "Python",
+        "Git",
+        "GitHub",
+        "Google Sheets",
+        "Google Calendar API",
+        "Telegram API",
+        "Canva",
+        "copywriting",
+        "content strategy"
+      ]
+    }
+  </script>
+</head>
+<body>
+  <div class="page-transition">
+    <div class="page-transition__wipe"></div>
+  </div>
+
+  <div id="intro" class="intro">
+    <div class="intro__bg"></div>
+    <div class="intro__logo-wrap">
+      <svg
+        class="intro__draw-ring"
+        id="introDrawRing"
+        viewBox="0 0 120 120"
+        aria-hidden="true"
+      >
+        <circle
+          cx="60"
+          cy="60"
+          r="56"
+          fill="none"
+          stroke="#E10600"
+          stroke-width="2"
+          stroke-dasharray="352"
+          stroke-dashoffset="352"
+        />
+      </svg>
+      <img
+        id="introLogo"
+        src="assets/photo.png"
+        alt="Takieddine Drici logo"
+        class="intro__logo"
+        width="120"
+        height="120"
+        loading="eager"
+        decoding="async"
+      />
+    </div>
+    <div class="intro__text">Takieddine Drici</div>
+  </div>
+
+  <div class="progress-wrap" aria-hidden="true">
+    <div id="progressBar" class="progress-bar"></div>
+  </div>
+
+  <a href="#content" class="skip-link">Skip to content</a>
+
+  <header id="navbar" class="navbar" role="banner">
+    <div class="navbar__inner container">
+      <a href="index.html" class="navbar__brand" aria-label="Takieddine Drici — home">
+        <img src="assets/photo.png" alt="Logo" class="navbar__logo" width="36" height="36" loading="eager" decoding="async" />
+        <span class="navbar__wordmark">Takieddine Drici</span>
+      </a>
+
+      <button class="navbar__toggle" id="navToggle" aria-expanded="false" aria-controls="navMenu" aria-label="Open menu">
+        <span class="navbar__toggle-bar"></span>
+        <span class="navbar__toggle-bar"></span>
+        <span class="navbar__toggle-bar"></span>
+      </button>
+
+      <nav id="navMenu" class="navbar__menu" role="navigation">
+        <div class="navbar__menu-top">
+          <div class="navbar__menu-brand">
+            <img src="assets/photo.png" alt="Logo" class="navbar__menu-logo" width="36" height="36" loading="eager" decoding="async" />
+            <span class="navbar__menu-wordmark">Takieddine Drici</span>
+          </div>
+          <button class="navbar__close" id="navClose" aria-label="Close menu">×</button>
+        </div>
+        <ul class="navbar__list">
+          <li><a href="skills.html" class="nav-link">Skills</a></li>
+          <li><a href="experience.html" class="nav-link">Experience</a></li>
+          <li><a href="projects.html" class="nav-link">Projects</a></li>
+          <li><a href="cv.html" class="nav-link">CV</a></li>
+          <li><a href="contact.html" class="nav-link">Contact</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main id="content" tabindex="-1">
+    <section class="section page-title" aria-labelledby="page-heading">
+      <div class="container">
+        <div class="page-title__wrap">
+          <span class="page-title__number">01</span>
+          <h1 id="page-heading" class="page-title__text">Skills</h1>
+        </div>
+        <div class="page-title__line"></div>
+      </div>
+    </section>
+
+    <section id="skills" class="section skills" aria-labelledby="skills-heading">
+      <div class="container">
+        <div class="section__header">
+          <h2 id="skills-heading" class="section__title">Skills <span class="section__title-accent">&amp; tools</span></h2>
+          <p class="section__desc">Grouped by Automation, AI, Development, and Tools.</p>
+        </div>
+        <div class="skills__groups">
+          <div class="skills__group" data-group>
+            <h3 class="skills__group-title">Automation</h3>
+            <ul class="skills__chips">
+              <li><span class="chip">n8n</span></li>
+              <li><span class="chip">Workflow Automation</span></li>
+              <li><span class="chip">Webhooks</span></li>
+              <li><span class="chip">REST APIs</span></li>
+              <li><span class="chip">API Integration</span></li>
+              <li><span class="chip">JSON</span></li>
+            </ul>
+          </div>
+          <div class="skills__group" data-group>
+            <h3 class="skills__group-title">AI</h3>
+            <ul class="skills__chips">
+              <li><span class="chip">OpenAI API</span></li>
+              <li><span class="chip">AI Agents</span></li>
+              <li><span class="chip">Prompt Engineering</span></li>
+            </ul>
+          </div>
+          <div class="skills__group" data-group>
+            <h3 class="skills__group-title">Development</h3>
+            <ul class="skills__chips">
+              <li><span class="chip">Python</span></li>
+              <li><span class="chip">Git / GitHub</span></li>
+            </ul>
+          </div>
+          <div class="skills__group" data-group>
+            <h3 class="skills__group-title">Tools &amp; Integrations</h3>
+            <ul class="skills__chips">
+              <li><span class="chip">Google Sheets</span></li>
+              <li><span class="chip">Google Calendar API</span></li>
+              <li><span class="chip">Telegram API</span></li>
+            </ul>
+          </div>
+          <div class="skills__group skills__group--quiet" data-group>
+            <h3 class="skills__group-title">Additional</h3>
+            <ul class="skills__chips">
+              <li><span class="chip">Canva</span></li>
+              <li><span class="chip">Copywriting</span></li>
+              <li><span class="chip">Content Strategy</span></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="how-i-work" class="section how-i-work" aria-labelledby="how-i-work-heading">
+      <div class="container">
+        <div class="section__header">
+          <h2 id="how-i-work-heading" class="section__title">How I <span class="section__title-accent">work</span></h2>
+          <p class="section__desc">A simple, repeatable process.</p>
+        </div>
+        <div class="process__steps">
+          <div class="process__step">
+            <span class="process__number">01</span>
+            <h3 class="process__title">Understand</h3>
+            <p class="process__desc">Identify the repetitive process and the outcome you need.</p>
+          </div>
+          <div class="process__step">
+            <span class="process__number">02</span>
+            <h3 class="process__title">Design</h3>
+            <p class="process__desc">Map the workflow, tools, and data flow before anything is built.</p>
+          </div>
+          <div class="process__step">
+            <span class="process__number">03</span>
+            <h3 class="process__title">Build</h3>
+            <p class="process__desc">Ship the automation using n8n, Python, APIs, and webhooks.</p>
+          </div>
+          <div class="process__step">
+            <span class="process__number">04</span>
+            <h3 class="process__title">Test</h3>
+            <p class="process__desc">Verify it runs reliably and document it so it keeps working.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <div class="next-page">
+      <a href="experience.html" class="next-page__link">Next: Experience<span class="next-page__arrow">→</span></a>
+    </div>
+  </main>
+
+  <footer class="footer" role="contentinfo">
+    <div class="container footer__inner">
+      <div class="footer__brand">
+        <img src="assets/photo.png" alt="Logo" class="footer__logo" width="32" height="32" loading="lazy" decoding="async" />
+        <span class="footer__wordmark">Takieddine Drici</span>
+      </div>
+      <p class="footer__copy">© 2026 Takieddine Drici. All rights reserved.</p>
+      <p class="footer__note">Built with plain HTML, CSS &amp; JS.</p>
+    </div>
+  </footer>
+
+  <div id="cursor" class="cursor" aria-hidden="true"></div>
+  <div id="cursorFollower" class="cursor-follower" aria-hidden="true"></div>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js" defer></script>
+  <script src="script.js" defer></script>
+</body>
+</html>

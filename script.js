@@ -1,6 +1,7 @@
 /* ==========================================================================
-   Takieddine Drici — Portfolio
+   Takieddine Drici — Portfolio (Multi-page)
    Vanilla JS + GSAP / ScrollTrigger (CDN)
+   Safely does nothing when an element is not on the current page.
    ========================================================================== */
 
 /* ---------- Helpers ---------- */
@@ -8,23 +9,40 @@ const $ = (sel, root = document) => root.querySelector(sel);
 const $$ = (sel, root = document) => Array.from(root.querySelectorAll(sel));
 
 const prefersReduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+const isFineHover = window.matchMedia("(hover: hover) and (pointer: fine)").matches;
 const isTouch = window.matchMedia("(any-pointer: coarse)").matches || "ontouchstart" in window;
+
+/* ---------- Page transition (red wipe) ---------- */
+const transition = $(".page-transition");
+function startTransition(href) {
+  if (!transition || prefersReduced) {
+    window.location.href = href;
+    return;
+  }
+  transition.classList.add("is-active");
+  setTimeout(() => {
+    window.location.href = href;
+  }, 450);
+}
 
 /* ---------- Scroll progress bar ---------- */
 const progressBar = $("#progressBar");
-window.addEventListener("scroll", () => {
-  const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
-  const scrollHeight =
-    document.documentElement.scrollHeight - document.documentElement.clientHeight;
-  const pct = scrollHeight ? (scrollTop / scrollHeight) * 100 : 0;
-  progressBar.style.transform = `scaleX(${pct / 100})`;
-});
+const progressWrap = $(".progress-wrap");
+if (progressBar) {
+  window.addEventListener("scroll", () => {
+    const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+    const scrollHeight =
+      document.documentElement.scrollHeight - document.documentElement.clientHeight;
+    const pct = scrollHeight ? (scrollTop / scrollHeight) * 100 : 0;
+    progressBar.style.transform = `scaleX(${pct / 100})`;
+  });
+}
 
-/* ---------- Custom cursor ---------- */
+/* ---------- Custom cursor (hover + fine pointer only) ---------- */
 const cursor = $("#cursor");
 const follower = $("#cursorFollower");
 
-if (!isTouch && !prefersReduced) {
+if (isFineHover && !isTouch && !prefersReduced && cursor && follower) {
   document.body.style.cursor = "none";
   window.addEventListener("mousemove", (e) => {
     const x = e.clientX;
@@ -48,143 +66,203 @@ if (!isTouch && !prefersReduced) {
   if (follower) follower.remove();
 }
 
-/* ---------- Navbar ---------- */
+/* ---------- Navbar (shared) ---------- */
 const navbar = $("#navbar");
 const navToggle = $("#navToggle");
 const navMenu = $("#navMenu");
 const navClose = $("#navClose");
 const navLinks = $$(".nav-link");
-const progressWrap = $(".progress-wrap");
-
-let lastScrollY = window.pageYOffset;
-window.addEventListener("scroll", () => {
-  const scrolled = window.pageYOffset > 60;
-  if (scrolled) {
-    navbar.classList.add("scrolled");
-  } else {
-    navbar.classList.remove("scrolled");
-  }
-  lastScrollY = window.pageYOffset;
-});
 
 function closeMenu() {
+  if (!navMenu) return;
   navMenu.classList.remove("is-open");
-  navToggle.setAttribute("aria-expanded", "false");
+  if (navToggle) navToggle.setAttribute("aria-expanded", "false");
   document.body.classList.remove("menu-locked");
-  progressWrap.classList.remove("menu-hidden");
+  if (progressWrap) progressWrap.classList.remove("menu-hidden");
+}
+
+if (navbar) {
+  window.addEventListener("scroll", () => {
+    const scrolled = window.pageYOffset > 60;
+    if (scrolled) navbar.classList.add("scrolled");
+    else navbar.classList.remove("scrolled");
+  });
 }
 
 // Mobile toggle
-navToggle.addEventListener("click", () => {
-  const open = navMenu.classList.toggle("is-open");
-  navToggle.setAttribute("aria-expanded", open);
-  document.body.classList.toggle("menu-locked", open);
-  progressWrap.classList.toggle("menu-hidden", open);
-});
+if (navToggle && navMenu) {
+  navToggle.addEventListener("click", () => {
+    const open = navMenu.classList.toggle("is-open");
+    navToggle.setAttribute("aria-expanded", open);
+    document.body.classList.toggle("menu-locked", open);
+    if (progressWrap) progressWrap.classList.toggle("menu-hidden", open);
+  });
+}
 
 // Close button
 if (navClose) {
   navClose.addEventListener("click", closeMenu);
 }
 
-// Close menu on link click + highlight active section
-const sections = $$("section[id]");
+// Close menu on nav link click
 navLinks.forEach((link) => {
   link.addEventListener("click", () => {
     closeMenu();
   });
 });
 
-function setActiveNav() {
-  const scrollPos = window.pageYOffset + 120;
-  let current = sections[0];
-  sections.forEach((sec) => {
-    if (sec.offsetTop <= scrollPos) current = sec;
-  });
-  const id = current.getAttribute("id");
-  navLinks.forEach((link) => {
-    link.classList.toggle("is-active", link.getAttribute("href") === `#${id}`);
-  });
-}
-window.addEventListener("scroll", setActiveNav);
-setActiveNav();
-
-/* ---------- Magnetic buttons ---------- */
-const magnetic = $$(".btn, .contact__btn");
-magnetic.forEach((el) => {
-  el.addEventListener("mousemove", (e) => {
-    const rect = el.getBoundingClientRect();
-    const x = e.clientX - rect.left - rect.width / 2;
-    const y = e.clientY - rect.top - rect.height / 2;
-    el.style.transform = `translate(${x * 0.35}px, ${y * 0.35}px)`;
-  });
-  el.addEventListener("mouseleave", () => {
-    el.style.transform = "translate(0, 0)";
-  });
-});
-
-/* ---------- Typewriter (hero) ---------- */
-const typewriter = $("#typewriter");
-const words = ["AI Automation Engineer", "Workflow Builder", "AI Assistant Developer"];
-let wordIndex = 0;
-let charIndex = 0;
-let isDeleting = false;
-let typeTimeout;
-
-function type() {
-  if (prefersReduced) {
-    typewriter.textContent = words[words.length - 1];
+// Smooth transition for all internal page links
+document.addEventListener("click", (e) => {
+  const link = e.target.closest("a[href]");
+  if (!link) return;
+  const href = link.getAttribute("href");
+  if (!href) return;
+  // External, mailto, tel, javascript: default
+  if (href.startsWith("http") || href.startsWith("mailto:") || href.startsWith("tel:") || href.startsWith("javascript:")) {
     return;
   }
-  const current = words[wordIndex];
-  const display = isDeleting ? current.slice(0, charIndex - 1) : current.slice(0, charIndex + 1);
-  typewriter.textContent = display;
-
-  if (!isDeleting && charIndex === current.length) {
-    // pause at end, then delete
-    isDeleting = true;
-    typeTimeout = setTimeout(type, 1400);
-  } else if (isDeleting && charIndex === 0) {
-    isDeleting = false;
-    wordIndex = (wordIndex + 1) % words.length;
-    typeTimeout = setTimeout(type, 500);
-  } else {
-    const speed = isDeleting ? 40 : 70;
-    charIndex += isDeleting ? -1 : 1;
-    typeTimeout = setTimeout(type, speed);
+  // Download or new-tab links: default
+  if (link.hasAttribute("download") || link.target === "_blank") {
+    return;
   }
+  // Same-page anchor: close menu only, default scroll
+  if (href.startsWith("#")) {
+    closeMenu();
+    return;
+  }
+  // Internal page link: close menu + red wipe transition
+  closeMenu();
+  e.preventDefault();
+  startTransition(href);
+});
+
+// Close on Escape
+window.addEventListener("keydown", (e) => {
+  if (e.key === "Escape" && navMenu && navMenu.classList.contains("is-open")) {
+    closeMenu();
+  }
+});
+
+// Highlight active link by current page path
+const currentPath = window.location.pathname.split("/").pop() || "index.html";
+navLinks.forEach((link) => {
+  const href = link.getAttribute("href");
+  if (href && !href.startsWith("http") && !href.startsWith("#")) {
+    const linkPath = href.split("/").pop();
+    if (linkPath === currentPath) {
+      link.classList.add("is-active");
+    }
+  } else if (href === "#" && currentPath === "index.html") {
+    link.classList.add("is-active");
+  }
+});
+
+/* ---------- Magnetic buttons (desktop only) ---------- */
+if (isFineHover && !isTouch && !prefersReduced) {
+  const magnetic = $$(".btn, .contact__btn");
+  magnetic.forEach((el) => {
+    el.addEventListener("mousemove", (e) => {
+      const rect = el.getBoundingClientRect();
+      const x = e.clientX - rect.left - rect.width / 2;
+      const y = e.clientY - rect.top - rect.height / 2;
+      el.style.transform = `translate(${x * 0.35}px, ${y * 0.35}px)`;
+    });
+    el.addEventListener("mouseleave", () => {
+      el.style.transform = "translate(0, 0)";
+    });
+  });
 }
 
-// start after intro finishes (kicked off in initIntro)
-
-/* ---------- Intro animation ---------- */
+/* ---------- Intro animation (first visit of session only) ---------- */
 function initIntro() {
   const intro = $("#intro");
+  if (!intro) return;
+
+  let shown = false;
+  try {
+    shown = sessionStorage.getItem("portfolio_intro_shown") === "1";
+  } catch (e) {
+    // sessionStorage unavailable; treat as not shown
+  }
+
   const introLogo = $("#introLogo");
   const introDrawRing = $("#introDrawRing");
   const introCircle = introDrawRing ? introDrawRing.querySelector("circle") : null;
   const introText = $(".intro__text");
+  const typewriter = $("#typewriter");
 
-  if (!intro || !introLogo) {
-    startTypewriter();
+  if (shown || prefersReduced) {
+    if (intro) intro.style.display = "none";
+    if (typewriter) {
+      typewriter.style.borderRight = "none";
+      typewriter.textContent = "AI Automation Engineer";
+    }
     return;
   }
 
-  const tl = gsap.timeline({ defaults: { ease: "power3.out" } });
+  try {
+    sessionStorage.setItem("portfolio_intro_shown", "1");
+  } catch (e) {
+    // ignore
+  }
 
-  tl.to(introLogo, { scale: 1, opacity: 1, duration: 0.9, delay: 0.3 })
-    .to(
-      introCircle,
-      { strokeDashoffset: 0, duration: 1, ease: "power2.inOut" },
-      "-=0.5"
-    )
-    .to(introText, { opacity: 1, duration: 0.6 }, "-=0.4")
-    .to(intro, { opacity: 0, visibility: "hidden", duration: 0.8, delay: 0.6 })
-    .set(intro, { display: "none" })
-    .call(startTypewriter);
+  if (!introLogo || !introCircle) {
+    if (intro) intro.style.display = "none";
+    return;
+  }
+
+  if (window.gsap) {
+    const tl = window.gsap.timeline({ defaults: { ease: "power3.out" } });
+    tl.to(introLogo, { scale: 1, opacity: 1, duration: 0.9, delay: 0.3 })
+      .to(
+        introCircle,
+        { strokeDashoffset: 0, duration: 1, ease: "power2.inOut" },
+        "-=0.5"
+      )
+      .to(introText, { opacity: 1, duration: 0.6 }, "-=0.4")
+      .to(intro, { opacity: 0, visibility: "hidden", duration: 0.8, delay: 0.6 })
+      .set(intro, { display: "none" })
+      .call(startTypewriter);
+  } else {
+    intro.style.display = "none";
+    startTypewriter();
+  }
 }
 
 function startTypewriter() {
+  const typewriter = $("#typewriter");
+  if (!typewriter) return;
+  const words = ["AI Automation Engineer", "Workflow Builder", "AI Assistant Developer"];
+  let wordIndex = 0;
+  let charIndex = 0;
+  let isDeleting = false;
+  let typeTimeout;
+
+  function type() {
+    if (prefersReduced) {
+      typewriter.textContent = words[words.length - 1];
+      return;
+    }
+    const current = words[wordIndex];
+    const display = isDeleting
+      ? current.slice(0, charIndex - 1)
+      : current.slice(0, charIndex + 1);
+    typewriter.textContent = display;
+
+    if (!isDeleting && charIndex === current.length) {
+      isDeleting = true;
+      typeTimeout = setTimeout(type, 1400);
+    } else if (isDeleting && charIndex === 0) {
+      isDeleting = false;
+      wordIndex = (wordIndex + 1) % words.length;
+      typeTimeout = setTimeout(type, 500);
+    } else {
+      const speed = isDeleting ? 40 : 70;
+      charIndex += isDeleting ? -1 : 1;
+      typeTimeout = setTimeout(type, speed);
+    }
+  }
+
   typewriter.style.borderRight = prefersReduced ? "none" : "2px solid #E10600";
   type();
 }
@@ -192,28 +270,24 @@ function startTypewriter() {
 /* ---------- GSAP ScrollTrigger setup ---------- */
 function initScrollReveal() {
   if (!window.gsap || !window.ScrollTrigger) {
-    // Fallback: reveal via IntersectionObserver
-    initIntersectionObserverFallback();
     return;
   }
 
-  gsap.registerPlugin(window.ScrollTrigger);
+  window.gsap.registerPlugin(window.ScrollTrigger);
 
-  // Reveal every section + staggered children
   $$(".section").forEach((section) => {
     const children = section.querySelectorAll(
-      ".fact, .skills__group, .timeline__item, .project-card, .cred-card, .cv__col, .contact__btn, .form__row, .about__meta-item"
+      ".skills__group, .timeline__item, .project-card, .cred-item, .build-card, .process__step, .contact__btn, .form__row"
     );
 
     window.ScrollTrigger.create({
       trigger: section,
       start: "top 82%",
-      end: "bottom 20%",
-      toggleClass: { targets: section, className: "is-visible" },
       once: true,
+      toggleClass: { targets: section, className: "is-visible" },
     });
 
-    gsap.fromTo(
+    window.gsap.fromTo(
       children,
       { y: 30, opacity: 0 },
       {
@@ -239,12 +313,42 @@ function initScrollReveal() {
       start: "top 70%",
       once: true,
       onEnter: () => {
-        gsap.to(timelineLine, { scaleY: 1, duration: 1, ease: "power2.out" });
+        window.gsap.to(timelineLine, { scaleY: 1, duration: 1, ease: "power2.out" });
       },
     });
   }
 
-  // Hero parallax portrait + float glow already via CSS; subtle scroll shift
+  // Workflow diagram draw (project detail pages)
+  const diagram = $(".workflow-diagram__svg");
+  if (diagram) {
+    const paths = diagram.querySelectorAll("path, line, circle, rect");
+    paths.forEach((p) => {
+      const len = p.getTotalLength ? p.getTotalLength() : 0;
+      if (len > 0) {
+        p.style.strokeDasharray = len;
+        p.style.strokeDashoffset = len;
+      }
+    });
+    window.ScrollTrigger.create({
+      trigger: ".workflow-diagram",
+      start: "top 82%",
+      once: true,
+      onEnter: () => {
+        paths.forEach((p) => {
+          const len = p.getTotalLength ? p.getTotalLength() : 0;
+          if (len > 0) {
+            window.gsap.to(p, {
+              strokeDashoffset: 0,
+              duration: 1,
+              ease: "power2.out",
+            });
+          }
+        });
+      },
+    });
+  }
+
+  // Hero parallax portrait (index only)
   const portrait = $(".hero__portrait");
   if (portrait && !prefersReduced) {
     window.ScrollTrigger.create({
@@ -260,23 +364,9 @@ function initScrollReveal() {
   }
 }
 
-function initIntersectionObserverFallback() {
-  const observer = new IntersectionObserver(
-    (entries) => {
-      entries.forEach((entry) => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add("is-visible");
-          observer.unobserve(entry.target);
-        }
-      });
-    },
-    { threshold: 0.15 }
-  );
-  $$(".section").forEach((s) => observer.observe(s));
-}
-
-/* ---------- Project card tilt ---------- */
+/* ---------- Project card tilt (desktop only) ---------- */
 function initTilt() {
+  if (isTouch || !isFineHover) return;
   $$("[data-tilt]").forEach((card) => {
     const thumb = card.querySelector(".project__thumb");
     card.addEventListener("mousemove", (e) => {
@@ -299,7 +389,7 @@ function initTilt() {
   });
 }
 
-/* ---------- Experiments toggle ---------- */
+/* ---------- Experiments toggle (projects page) ---------- */
 const experimentsToggle = $("#experimentsToggle");
 const experimentsList = $("#experimentsList");
 
@@ -309,8 +399,10 @@ if (experimentsToggle && experimentsList) {
     experimentsToggle.setAttribute("aria-expanded", !expanded);
     if (expanded) {
       experimentsList.setAttribute("hidden", "");
+      experimentsToggle.querySelector(".experiments__arrow").style.transform = "rotate(0deg)";
     } else {
       experimentsList.removeAttribute("hidden");
+      experimentsToggle.querySelector(".experiments__arrow").style.transform = "rotate(180deg)";
     }
   });
 }
@@ -351,63 +443,6 @@ if (contactForm) {
     window.location.href = `mailto:dricitakieddine75@gmail.com?subject=${subject}&body=${body}`;
   });
 }
-
-/* ---------- Project detail modal ---------- */
-const modal = $("#projectModal");
-const modalOverlay = $("#modalOverlay");
-const modalClose = $("#modalClose");
-const detailBtns = $$(".project__details");
-const fields = {
-  title: $("#modalTitle"),
-  problem: $("#modalProblem"),
-  solution: $("#modalSolution"),
-  tools: $("#modalTools"),
-  result: $("#modalResult"),
-};
-
-function openModal(btn) {
-  if (!modal) return;
-  const d = btn.dataset;
-  if (fields.title) fields.title.textContent = d.title || "";
-  if (fields.problem) fields.problem.textContent = d.problem || "";
-  if (fields.solution) fields.solution.textContent = d.solution || "";
-  if (fields.tools) fields.tools.textContent = d.tools || "";
-  if (fields.result) fields.result.textContent = d.result || "";
-  modal.setAttribute("aria-hidden", "false");
-  document.body.style.overflow = "hidden";
-  if (window.gsap && !prefersReduced) {
-    gsap.fromTo(modalOverlay, { opacity: 0 }, { opacity: 0.6, duration: 0.3 });
-    gsap.fromTo(".modal__content", { y: 20, opacity: 0 }, { y: 0, opacity: 1, duration: 0.4 });
-  }
-}
-
-function closeModal() {
-  if (!modal) return;
-  modal.setAttribute("aria-hidden", "true");
-  document.body.style.overflow = "";
-  if (window.gsap && !prefersReduced) {
-    gsap.to([modalOverlay, ".modal__content"], { opacity: 0, y: 0, duration: 0.2 });
-  }
-}
-
-detailBtns.forEach((btn) => {
-  btn.addEventListener("click", () => openModal(btn));
-});
-if (modalClose) modalClose.addEventListener("click", closeModal);
-if (modalOverlay) modalOverlay.addEventListener("click", closeModal);
-window.addEventListener("keydown", (e) => {
-  if (e.key === "Escape" && modal && modal.getAttribute("aria-hidden") === "false") closeModal();
-});
-
-/* ---------- Project links / images ---------- */
-/*
-  To add real project links/images later:
-  1. Replace each <svg class="project__thumb project__thumb--workflow"> with an
-     <img src="assets/project-NAME.jpg" loading="lazy"> inside .project__thumb-wrap.
-  2. Wrap .project__thumb-wrap (or the whole .project-card) in an <a href="project-url">
-     to link to live projects/case studies. Add target="_blank" rel="noopener" as needed.
-  3. Keep the modal data-* attributes on the .project__details buttons for case-study copy.
-*/
 
 /* ---------- Init ---------- */
 function init() {

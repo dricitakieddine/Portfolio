@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+
+  <script>
+    window.SITE_URL = "https://dricitakieddine.github.io/Portfolio/";
+    document.addEventListener("DOMContentLoaded", () => {
+      const og = document.querySelector('meta[property="og:url"]');
+      if (og) og.content = window.SITE_URL + "contact.html";
+      const canon = document.querySelector('link[rel="canonical"]');
+      if (canon) canon.href = window.SITE_URL + "contact.html";
+      const json = document.querySelector('script[type="application/ld+json"]');
+      if (json) {
+        try {
+          const data = JSON.parse(json.textContent);
+          data.url = window.SITE_URL + "contact.html";
+          json.textContent = JSON.stringify(data);
+        } catch (e) {}
+      }
+    });
+  </script>
+
+  <meta
+    name="description"
+    content="Takieddine Drici — Contact. Have a repetitive process? Let's turn it into an automation. Email, WhatsApp, GitHub."
+  />
+
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://dricitakieddine.github.io/Portfolio/contact.html" />
+  <meta property="og:title" content="Contact — Takieddine Drici" />
+  <meta
+    property="og:description"
+    content="Get in touch: Email, WhatsApp, or GitHub."
+  />
+  <meta property="og:image" content="assets/photo.png" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:image" content="assets/photo.png" />
+
+  <link rel="canonical" href="https://dricitakieddine.github.io/Portfolio/contact.html" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Space+Grotesk:wght@500;600;700;800&display=swap"
+    rel="stylesheet"
+  />
+  <link rel="icon" type="image/png" href="assets/photo.png" />
+  <link rel="apple-touch-icon" type="image/png" href="assets/photo.png" />
+  <title>Contact — Takieddine Drici</title>
+  <link rel="stylesheet" href="style.css" />
+
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Person",
+      "name": "Takieddine Drici",
+      "additionalName": "Taki",
+      "jobTitle": "AI Automation Engineer",
+      "url": "https://dricitakieddine.github.io/Portfolio/contact.html",
+      "sameAs": ["https://github.com/dricitakieddine"]
+    }
+  </script>
+</head>
+<body>
+  <div class="page-transition">
+    <div class="page-transition__wipe"></div>
+  </div>
+
+  <div id="intro" class="intro">
+    <div class="intro__bg"></div>
+    <div class="intro__logo-wrap">
+      <svg
+        class="intro__draw-ring"
+        id="introDrawRing"
+        viewBox="0 0 120 120"
+        aria-hidden="true"
+      >
+        <circle
+          cx="60"
+          cy="60"
+          r="56"
+          fill="none"
+          stroke="#E10600"
+          stroke-width="2"
+          stroke-dasharray="352"
+          stroke-dashoffset="352"
+        />
+      </svg>
+      <img
+        id="introLogo"
+        src="assets/photo.png"
+        alt="Takieddine Drici logo"
+        class="intro__logo"
+        width="120"
+        height="120"
+        loading="eager"
+        decoding="async"
+      />
+    </div>
+    <div class="intro__text">Takieddine Drici</div>
+  </div>
+
+  <div class="progress-wrap" aria-hidden="true">
+    <div id="progressBar" class="progress-bar"></div>
+  </div>
+
+  <a href="#content" class="skip-link">Skip to content</a>
+
+  <header id="navbar" class="navbar" role="banner">
+    <div class="navbar__inner container">
+      <a href="index.html" class="navbar__brand" aria-label="Takieddine Drici — home">
+        <img src="assets/photo.png" alt="Logo" class="navbar__logo" width="36" height="36" loading="eager" decoding="async" />
+        <span class="navbar__wordmark">Takieddine Drici</span>
+      </a>
+
+      <button class="navbar__toggle" id="navToggle" aria-expanded="false" aria-controls="navMenu" aria-label="Open menu">
+        <span class="navbar__toggle-bar"></span>
+        <span class="navbar__toggle-bar"></span>
+        <span class="navbar__toggle-bar"></span>
+      </button>
+
+      <nav id="navMenu" class="navbar__menu" role="navigation">
+        <div class="navbar__menu-top">
+          <div class="navbar__menu-brand">
+            <img src="assets/photo.png" alt="Logo" class="navbar__menu-logo" width="36" height="36" loading="eager" decoding="async" />
+            <span class="navbar__menu-wordmark">Takieddine Drici</span>
+          </div>
+          <button class="navbar__close" id="navClose" aria-label="Close menu">×</button>
+        </div>
+        <ul class="navbar__list">
+          <li><a href="skills.html" class="nav-link">Skills</a></li>
+          <li><a href="experience.html" class="nav-link">Experience</a></li>
+          <li><a href="projects.html" class="nav-link">Projects</a></li>
+          <li><a href="cv.html" class="nav-link">CV</a></li>
+          <li><a href="contact.html" class="nav-link">Contact</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main id="content" tabindex="-1">
+    <section class="section page-title" aria-labelledby="page-heading">
+      <div class="container">
+        <div class="page-title__wrap">
+          <span class="page-title__number">05</span>
+          <h1 id="page-heading" class="page-title__text">Contact</h1>
+        </div>
+        <div class="page-title__line"></div>
+      </div>
+    </section>
+
+    <section id="contact" class="section contact" aria-labelledby="contact-heading">
+      <div class="container">
+        <div class="section__header">
+          <h2 id="contact-heading" class="section__title">Have a <span class="section__title-accent">repetitive process?</span></h2>
+          <p class="section__desc">Let's turn it into an automation.</p>
+        </div>
+        <div class="contact__grid">
+          <div class="contact__buttons">
+            <a href="mailto:dricitakieddine75@gmail.com" class="contact__btn" data-toast>
+              <span class="contact__btn-icon">✉</span>
+              <span class="contact__btn-label">Email me</span>
+            </a>
+            <a href="https://wa.me/213563249255" class="contact__btn contact__btn--wa" target="_blank" rel="noopener">
+              <span class="contact__btn-icon">💬</span>
+              <span class="contact__btn-label">WhatsApp</span>
+            </a>
+            <a href="https://github.com/dricitakieddine" class="contact__btn contact__btn--gh" target="_blank" rel="noopener">
+              <span class="contact__btn-icon">🐙</span>
+              <span class="contact__btn-label">GitHub</span>
+            </a>
+            <button class="contact__btn contact__btn--copy" id="copyEmail">
+              <span class="contact__btn-icon">📋</span>
+              <span class="contact__btn-label">Copy email</span>
+            </button>
+          </div>
+          <div class="contact__form-wrap">
+            <form id="contactForm" class="contact__form" novalidate>
+              <div class="form__row">
+                <label for="cfName" class="form__label">Name</label>
+                <input type="text" id="cfName" name="name" class="form__input" required placeholder="Your name" />
+              </div>
+              <div class="form__row">
+                <label for="cfEmail" class="form__label">Email</label>
+                <input type="email" id="cfEmail" name="email" class="form__input" required placeholder="you@example.com" />
+              </div>
+              <div class="form__row">
+                <label for="cfMessage" class="form__label">Message</label>
+                <textarea id="cfMessage" name="message" class="form__textarea" required rows="5" placeholder="What's on your mind?"></textarea>
+              </div>
+              <button type="submit" class="btn btn--red btn--block">Open email</button>
+            </form>
+            <p class="form__note">No backend — opens your default email client with your message pre-filled.</p>
+          </div>
+        </div>
+        <div id="toast" class="toast" role="alert" aria-live="polite">Email copied to clipboard</div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer" role="contentinfo">
+    <div class="container footer__inner">
+      <div class="footer__brand">
+        <img src="assets/photo.png" alt="Logo" class="footer__logo" width="32" height="32" loading="lazy" decoding="async" />
+        <span class="footer__wordmark">Takieddine Drici</span>
+      </div>
+      <p class="footer__copy">© 2026 Takieddine Drici. All rights reserved.</p>
+      <p class="footer__note">Built with plain HTML, CSS &amp; JS.</p>
+    </div>
+  </footer>
+
+  <div id="cursor" class="cursor" aria-hidden="true"></div>
+  <div id="cursorFollower" class="cursor-follower" aria-hidden="true"></div>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js" defer></script>
+  <script src="script.js" defer></script>
+</body>
+</html>

@@ -1,0 +1,367 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+
+  <script>
+    window.SITE_URL = "https://dricitakieddine.github.io/Portfolio/";
+    document.addEventListener("DOMContentLoaded", () => {
+      const og = document.querySelector('meta[property="og:url"]');
+      if (og) og.content = window.SITE_URL + "projects.html";
+      const canon = document.querySelector('link[rel="canonical"]');
+      if (canon) canon.href = window.SITE_URL + "projects.html";
+      const json = document.querySelector('script[type="application/ld+json"]');
+      if (json) {
+        try {
+          const data = JSON.parse(json.textContent);
+          data.url = window.SITE_URL + "projects.html";
+          json.textContent = JSON.stringify(data);
+        } catch (e) {}
+      }
+    });
+  </script>
+
+  <meta
+    name="description"
+    content="Takieddine Drici — Projects. Real builds: AI Google Calendar Assistant, Personal AI Telegram Assistant, Instagram Content & Growth System. Plus concept demos clearly labeled."
+  />
+
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://dricitakieddine.github.io/Portfolio/projects.html" />
+  <meta property="og:title" content="Projects — Takieddine Drici" />
+  <meta
+    property="og:description"
+    content="Real builds and concept demos: AI Google Calendar Assistant, Personal AI Telegram Assistant, Instagram Content & Growth System."
+  />
+  <meta property="og:image" content="assets/photo.png" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:image" content="assets/photo.png" />
+
+  <link rel="canonical" href="https://dricitakieddine.github.io/Portfolio/projects.html" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Space+Grotesk:wght@500;600;700;800&display=swap"
+    rel="stylesheet"
+  />
+  <link rel="icon" type="image/png" href="assets/photo.png" />
+  <link rel="apple-touch-icon" type="image/png" href="assets/photo.png" />
+  <title>Projects — Takieddine Drici</title>
+  <link rel="stylesheet" href="style.css" />
+
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Person",
+      "name": "Takieddine Drici",
+      "additionalName": "Taki",
+      "jobTitle": "AI Automation Engineer",
+      "url": "https://dricitakieddine.github.io/Portfolio/projects.html",
+      "sameAs": ["https://github.com/dricitakieddine"]
+    }
+  </script>
+</head>
+<body>
+  <div class="page-transition">
+    <div class="page-transition__wipe"></div>
+  </div>
+
+  <div id="intro" class="intro">
+    <div class="intro__bg"></div>
+    <div class="intro__logo-wrap">
+      <svg
+        class="intro__draw-ring"
+        id="introDrawRing"
+        viewBox="0 0 120 120"
+        aria-hidden="true"
+      >
+        <circle
+          cx="60"
+          cy="60"
+          r="56"
+          fill="none"
+          stroke="#E10600"
+          stroke-width="2"
+          stroke-dasharray="352"
+          stroke-dashoffset="352"
+        />
+      </svg>
+      <img
+        id="introLogo"
+        src="assets/photo.png"
+        alt="Takieddine Drici logo"
+        class="intro__logo"
+        width="120"
+        height="120"
+        loading="eager"
+        decoding="async"
+      />
+    </div>
+    <div class="intro__text">Takieddine Drici</div>
+  </div>
+
+  <div class="progress-wrap" aria-hidden="true">
+    <div id="progressBar" class="progress-bar"></div>
+  </div>
+
+  <a href="#content" class="skip-link">Skip to content</a>
+
+  <header id="navbar" class="navbar" role="banner">
+    <div class="navbar__inner container">
+      <a href="index.html" class="navbar__brand" aria-label="Takieddine Drici — home">
+        <img src="assets/photo.png" alt="Logo" class="navbar__logo" width="36" height="36" loading="eager" decoding="async" />
+        <span class="navbar__wordmark">Takieddine Drici</span>
+      </a>
+
+      <button class="navbar__toggle" id="navToggle" aria-expanded="false" aria-controls="navMenu" aria-label="Open menu">
+        <span class="navbar__toggle-bar"></span>
+        <span class="navbar__toggle-bar"></span>
+        <span class="navbar__toggle-bar"></span>
+      </button>
+
+      <nav id="navMenu" class="navbar__menu" role="navigation">
+        <div class="navbar__menu-top">
+          <div class="navbar__menu-brand">
+            <img src="assets/photo.png" alt="Logo" class="navbar__menu-logo" width="36" height="36" loading="eager" decoding="async" />
+            <span class="navbar__menu-wordmark">Takieddine Drici</span>
+          </div>
+          <button class="navbar__close" id="navClose" aria-label="Close menu">×</button>
+        </div>
+        <ul class="navbar__list">
+          <li><a href="skills.html" class="nav-link">Skills</a></li>
+          <li><a href="experience.html" class="nav-link">Experience</a></li>
+          <li><a href="projects.html" class="nav-link">Projects</a></li>
+          <li><a href="cv.html" class="nav-link">CV</a></li>
+          <li><a href="contact.html" class="nav-link">Contact</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main id="content" tabindex="-1">
+    <section class="section page-title" aria-labelledby="page-heading">
+      <div class="container">
+        <div class="page-title__wrap">
+          <span class="page-title__number">03</span>
+          <h1 id="page-heading" class="page-title__text">Projects</h1>
+        </div>
+        <div class="page-title__line"></div>
+      </div>
+    </section>
+
+    <section id="projects" class="section projects" aria-labelledby="projects-heading">
+      <div class="container">
+        <div class="section__header">
+          <h2 id="projects-heading" class="section__title">Projects <span class="section__title-accent">&amp; portfolio</span></h2>
+          <p class="section__desc">Real builds and concept demos are labeled clearly.</p>
+        </div>
+        <p class="projects__note">Screenshots coming soon.</p>
+
+        <!-- Featured: real builds -->
+        <div class="projects__grid" id="projectsGrid">
+          <article class="project-card project-card--featured" data-tilt>
+            <div class="project__thumb-wrap">
+              <svg class="project__thumb project__thumb--workflow" viewBox="0 0 100 60" aria-label="Calendar workflow preview">
+                <rect x="10" y="7" w="80" h="10" rx="2" fill="none" stroke="#333" />
+                <line x1="30" y1="24" x2="70" y2="24" stroke="#333" stroke-width="1.5" />
+                <line x1="30" y1="40" x2="70" y2="40" stroke="#333" stroke-width="1.5" />
+                <line x1="30" y1="24" x2="30" y2="40" stroke="#333" stroke-width="1.5" />
+                <line x1="50" y1="24" x2="50" y2="40" stroke="#333" stroke-width="1.5" />
+                <line x1="70" y1="24" x2="70" y2="40" stroke="#333" stroke-width="1.5" />
+                <circle cx="30" cy="24" r="2.5" fill="#E10600" />
+                <circle cx="50" cy="24" r="2.5" fill="#E10600" />
+                <circle cx="70" cy="24" r="2.5" fill="#E10600" />
+                <circle cx="30" cy="40" r="2.5" fill="#E10600" />
+                <circle cx="50" cy="40" r="2.5" fill="#E10600" />
+                <circle cx="70" cy="40" r="2.5" fill="#E10600" />
+              </svg>
+              <div class="project__overlay">
+                <span class="project__view">View case</span>
+              </div>
+            </div>
+            <div class="project__body">
+              <h3 class="project__title">AI Google Calendar Assistant</h3>
+              <p class="project__desc">Scheduling automation that validates calendar data and triggers confirmations.</p>
+              <div class="project__meta">
+                <p><strong>Built with:</strong> n8n · OpenAI · Google Calendar API</p>
+                <p><strong>Status:</strong> Built and working</p>
+              </div>
+              <a href="project-calendar.html" class="btn btn--ghost btn--small">View details</a>
+            </div>
+          </article>
+
+          <article class="project-card project-card--featured" data-tilt>
+            <div class="project__thumb-wrap">
+              <svg class="project__thumb project__thumb--workflow" viewBox="0 0 100 60" aria-label="Chat workflow preview">
+                <path d="M12 22 h36 a4 4 0 0 1 4 4 v18 a4 4 0 0 1 -4 4 h-36 a4 4 0 0 1 -4 -4 v-18 a4 4 0 0 1 4 -4 z" fill="none" stroke="#333" stroke-width="1.5" />
+                <path d="M52 14 h36 a4 4 0 0 1 4 4 v18 a4 4 0 0 1 -4 4 h-36 a4 4 0 0 1 -4 -4 v-18 a4 4 0 0 1 4 -4 z" fill="none" stroke="#E10600" stroke-width="1.5" />
+                <line x1="28" y1="34" x2="68" y2="22" stroke="#333" stroke-width="1.5" />
+                <circle cx="28" cy="34" r="2.5" fill="#E10600" />
+                <circle cx="68" cy="22" r="2.5" fill="#E10600" />
+              </svg>
+              <div class="project__overlay">
+                <span class="project__view">View case</span>
+              </div>
+            </div>
+            <div class="project__body">
+              <h3 class="project__title">Personal AI Telegram Assistant</h3>
+              <p class="project__desc">Bot that processes text and voice messages and triggers rule-based actions.</p>
+              <div class="project__meta">
+                <p><strong>Built with:</strong> Telegram API · OpenAI · n8n</p>
+                <p><strong>Status:</strong> Built and working</p>
+              </div>
+              <a href="project-telegram.html" class="btn btn--ghost btn--small">View details</a>
+            </div>
+          </article>
+
+          <article class="project-card project-card--featured" data-tilt>
+            <div class="project__thumb-wrap">
+              <svg class="project__thumb project__thumb--workflow" viewBox="0 0 100 60" aria-label="Content grid workflow preview">
+                <rect x="12" y="14" w="20" h="16" rx="1" fill="none" stroke="#333" stroke-width="1.5" />
+                <rect x="40" y="14" w="20" h="16" rx="1" fill="none" stroke="#333" stroke-width="1.5" />
+                <rect x="68" y="14" w="20" h="16" rx="1" fill="none" stroke="#333" stroke-width="1.5" />
+                <rect x="12" y="30" w="20" h="16" rx="1" fill="none" stroke="#333" stroke-width="1.5" />
+                <rect x="40" y="30" w="20" h="16" rx="1" fill="none" stroke="#333" stroke-width="1.5" />
+                <rect x="68" y="30" w="20" h="16" rx="1" fill="none" stroke="#333" stroke-width="1.5" />
+                <line x1="22" y1="38" x2="50" y2="38" stroke="#333" stroke-width="1.5" />
+                <line x1="50" y1="38" x2="78" y2="38" stroke="#333" stroke-width="1.5" />
+                <line x1="22" y1="22" x2="22" y2="38" stroke="#333" stroke-width="1.5" />
+                <circle cx="22" cy="22" r="2.5" fill="#E10600" />
+                <circle cx="22" cy="38" r="2.5" fill="#E10600" />
+                <circle cx="50" cy="38" r="2.5" fill="#E10600" />
+                <circle cx="78" cy="38" r="2.5" fill="#E10600" />
+              </svg>
+              <div class="project__overlay">
+                <span class="project__view">View case</span>
+              </div>
+            </div>
+            <div class="project__body">
+              <h3 class="project__title">Instagram Content &amp; Growth System</h3>
+              <p class="project__desc">30-day calendar and faceless content strategy for an AI-tools audience.</p>
+              <div class="project__meta">
+                <p><strong>Built with:</strong> Canva · Content calendar · Audience research</p>
+                <p><strong>Status:</strong> Built and working</p>
+              </div>
+              <a href="project-instagram.html" class="btn btn--ghost btn--small">View details</a>
+            </div>
+          </article>
+        </div>
+
+        <!-- Concept demos (collapsed) -->
+        <div class="experiments">
+          <button class="experiments__toggle" id="experimentsToggle" aria-expanded="false" aria-controls="experimentsList">
+            More experiments <span class="experiments__arrow">▾</span>
+          </button>
+          <div class="experiments__list" id="experimentsList" hidden>
+            <div class="experiments__grid">
+              <article class="project-card project-card--experiment" data-tilt>
+                <div class="project__thumb-wrap">
+                  <svg class="project__thumb project__thumb--workflow" viewBox="0 0 100 60" aria-label="WhatsApp auto-reply workflow preview">
+                    <path d="M12 22 h30 a4 4 0 0 1 4 4 v14 a4 4 0 0 1 -4 4 h-30 a4 4 0 0 1 -4 -4 v-14 a4 4 0 0 1 4 -4 z" fill="none" stroke="#333" stroke-width="1.5" />
+                    <line x1="48" y1="29" x2="56" y2="29" stroke="#333" stroke-width="1.5" />
+                    <circle cx="64" cy="29" r="3" fill="#E10600" />
+                    <line x1="72" y1="29" x2="80" y2="40" stroke="#333" stroke-width="1.5" />
+                    <path d="M88 34 h-30 a4 4 0 0 1 -4 -4 v-12 a4 4 0 0 1 4 -4 h30 a4 4 0 0 1 4 4 v12 a4 4 0 0 1 -4 4 z" fill="none" stroke="#333" stroke-width="1.5" />
+                    <circle cx="80" cy="29" r="2.5" fill="#E10600" />
+                  </svg>
+                  <div class="project__overlay">
+                    <span class="project__view">View case</span>
+                  </div>
+                </div>
+                <div class="project__body">
+                  <span class="project__badge">Concept Demo</span>
+                  <h3 class="project__title">WhatsApp Lead Auto-Reply</h3>
+                  <p class="project__desc">Concept demo: an auto-reply workflow for inbound WhatsApp leads.</p>
+                  <div class="project__meta">
+                    <p><strong>Built with:</strong> n8n · WhatsApp</p>
+                    <p><strong>Status:</strong> Concept demo</p>
+                  </div>
+                  <a href="#" class="btn btn--ghost btn--small">View details</a>
+                </div>
+              </article>
+
+              <article class="project-card project-card--experiment" data-tilt>
+                <div class="project__thumb-wrap">
+                  <svg class="project__thumb project__thumb--workflow" viewBox="0 0 100 60" aria-label="Invoice reminder workflow preview">
+                    <rect x="12" y="20" w="24" h="20" rx="2" fill="none" stroke="#333" stroke-width="1.5" />
+                    <line x1="36" y1="25" x2="36" y2="35" stroke="#333" stroke-width="1.5" />
+                    <line x1="36" y1="20" x2="36" y2="40" stroke="#333" stroke-width="1.5" />
+                    <line x1="44" y1="29" x2="56" y2="29" stroke="#333" stroke-width="1.5" />
+                    <circle cx="64" cy="29" r="3" fill="#E10600" />
+                    <line x1="72" y1="29" x2="84" y2="29" stroke="#333" stroke-width="1.5" />
+                    <path d="M92 22 h-14 a4 4 0 0 1 -4 -4 v-4 a4 4 0 0 1 4 -4 h14 a4 4 0 0 1 4 4 v4 a4 4 0 0 1 -4 4 z" fill="none" stroke="#333" stroke-width="1.5" />
+                    <circle cx="92" cy="29" r="2.5" fill="#E10600" />
+                  </svg>
+                  <div class="project__overlay">
+                    <span class="project__view">View case</span>
+                  </div>
+                </div>
+                <div class="project__body">
+                  <span class="project__badge">Concept Demo</span>
+                  <h3 class="project__title">Invoice Reminder Automation</h3>
+                  <p class="project__desc">Concept demo: an n8n + Google Sheets automation that flags overdue invoices.</p>
+                  <div class="project__meta">
+                    <p><strong>Built with:</strong> n8n · Google Sheets</p>
+                    <p><strong>Status:</strong> Concept demo</p>
+                  </div>
+                  <a href="#" class="btn btn--ghost btn--small">View details</a>
+                </div>
+              </article>
+
+              <article class="project-card project-card--experiment" data-tilt>
+                <div class="project__thumb-wrap">
+                  <svg class="project__thumb project__thumb--workflow" viewBox="0 0 100 60" aria-label="Content report workflow preview">
+                    <rect x="12" y="20" w="24" h="20" rx="2" fill="none" stroke="#333" stroke-width="1.5" />
+                    <line x1="36" y1="30" x2="46" y2="30" stroke="#333" stroke-width="1.5" />
+                    <circle cx="54" cy="30" r="3" fill="#E10600" />
+                    <line x1="62" y1="30" x2="72" y2="20" stroke="#333" stroke-width="1.5" />
+                    <line x1="72" y1="20" x2="72" y2="40" stroke="#333" stroke-width="1.5" />
+                    <rect x="80" y="22" w="18" h="16" rx="2" fill="none" stroke="#333" stroke-width="1.5" />
+                    <circle cx="80" cy="30" r="2.5" fill="#E10600" />
+                  </svg>
+                  <div class="project__overlay">
+                    <span class="project__view">View case</span>
+                  </div>
+                </div>
+                <div class="project__body">
+                  <span class="project__badge">Concept Demo</span>
+                  <h3 class="project__title">Weekly Content Report Generator</h3>
+                  <p class="project__desc">Concept demo: a Python script that compiles a weekly content performance report into Google Sheets.</p>
+                  <div class="project__meta">
+                    <p><strong>Built with:</strong> Python · Google Sheets</p>
+                    <p><strong>Status:</strong> Concept demo</p>
+                  </div>
+                  <a href="#" class="btn btn--ghost btn--small">View details</a>
+                </div>
+              </article>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <div class="next-page">
+      <a href="cv.html" class="next-page__link">Next: CV<span class="next-page__arrow">→</span></a>
+    </div>
+  </main>
+
+  <footer class="footer" role="contentinfo">
+    <div class="container footer__inner">
+      <div class="footer__brand">
+        <img src="assets/photo.png" alt="Logo" class="footer__logo" width="32" height="32" loading="lazy" decoding="async" />
+        <span class="footer__wordmark">Takieddine Drici</span>
+      </div>
+      <p class="footer__copy">© 2026 Takieddine Drici. All rights reserved.</p>
+      <p class="footer__note">Built with plain HTML, CSS &amp; JS.</p>
+    </div>
+  </footer>
+
+  <div id="cursor" class="cursor" aria-hidden="true"></div>
+  <div id="cursorFollower" class="cursor-follower" aria-hidden="true"></div>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js" defer></script>
+  <script src="script.js" defer></script>
+</body>
+</html>

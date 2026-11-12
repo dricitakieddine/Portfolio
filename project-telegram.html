@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+
+  <script>
+    window.SITE_URL = "https://dricitakieddine.github.io/Portfolio/";
+    document.addEventListener("DOMContentLoaded", () => {
+      const og = document.querySelector('meta[property="og:url"]');
+      if (og) og.content = window.SITE_URL + "project-telegram.html";
+      const canon = document.querySelector('link[rel="canonical"]');
+      if (canon) canon.href = window.SITE_URL + "project-telegram.html";
+      const json = document.querySelector('script[type="application/ld+json"]');
+      if (json) {
+        try {
+          const data = JSON.parse(json.textContent);
+          data.url = window.SITE_URL + "project-telegram.html";
+          json.textContent = JSON.stringify(data);
+        } catch (e) {}
+      }
+    });
+  </script>
+
+  <meta
+    name="description"
+    content="Personal AI Telegram Assistant — bot that processes text and voice messages and triggers rule-based actions. Built with Telegram API, OpenAI, n8n."
+  />
+
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://dricitakieddine.github.io/Portfolio/project-telegram.html" />
+  <meta property="og:title" content="Personal AI Telegram Assistant — Takieddine Drici" />
+  <meta
+    property="og:description"
+    content="Telegram bot that processes text and voice messages and triggers rule-based actions."
+  />
+  <meta property="og:image" content="assets/photo.png" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:image" content="assets/photo.png" />
+
+  <link rel="canonical" href="https://dricitakieddine.github.io/Portfolio/project-telegram.html" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Space+Grotesk:wght@500;600;700;800&display=swap"
+    rel="stylesheet"
+  />
+  <link rel="icon" type="image/png" href="assets/photo.png" />
+  <link rel="apple-touch-icon" type="image/png" href="assets/photo.png" />
+  <title>Personal AI Telegram Assistant — Takieddine Drici</title>
+  <link rel="stylesheet" href="style.css" />
+
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Person",
+      "name": "Takieddine Drici",
+      "additionalName": "Taki",
+      "jobTitle": "AI Automation Engineer",
+      "url": "https://dricitakieddine.github.io/Portfolio/project-telegram.html",
+      "sameAs": ["https://github.com/dricitakieddine"]
+    }
+  </script>
+</head>
+<body>
+  <div class="page-transition">
+    <div class="page-transition__wipe"></div>
+  </div>
+
+  <div id="intro" class="intro">
+    <div class="intro__bg"></div>
+    <div class="intro__logo-wrap">
+      <svg
+        class="intro__draw-ring"
+        id="introDrawRing"
+        viewBox="0 0 120 120"
+        aria-hidden="true"
+      >
+        <circle
+          cx="60"
+          cy="60"
+          r="56"
+          fill="none"
+          stroke="#E10600"
+          stroke-width="2"
+          stroke-dasharray="352"
+          stroke-dashoffset="352"
+        />
+      </svg>
+      <img
+        id="introLogo"
+        src="assets/photo.png"
+        alt="Takieddine Drici logo"
+        class="intro__logo"
+        width="120"
+        height="120"
+        loading="eager"
+        decoding="async"
+      />
+    </div>
+    <div class="intro__text">Takieddine Drici</div>
+  </div>
+
+  <div class="progress-wrap" aria-hidden="true">
+    <div id="progressBar" class="progress-bar"></div>
+  </div>
+
+  <a href="#content" class="skip-link">Skip to content</a>
+
+  <header id="navbar" class="navbar" role="banner">
+    <div class="navbar__inner container">
+      <a href="index.html" class="navbar__brand" aria-label="Takieddine Drici — home">
+        <img src="assets/photo.png" alt="Logo" class="navbar__logo" width="36" height="36" loading="eager" decoding="async" />
+        <span class="navbar__wordmark">Takieddine Drici</span>
+      </a>
+
+      <button class="navbar__toggle" id="navToggle" aria-expanded="false" aria-controls="navMenu" aria-label="Open menu">
+        <span class="navbar__toggle-bar"></span>
+        <span class="navbar__toggle-bar"></span>
+        <span class="navbar__toggle-bar"></span>
+      </button>
+
+      <nav id="navMenu" class="navbar__menu" role="navigation">
+        <div class="navbar__menu-top">
+          <div class="navbar__menu-brand">
+            <img src="assets/photo.png" alt="Logo" class="navbar__menu-logo" width="36" height="36" loading="eager" decoding="async" />
+            <span class="navbar__menu-wordmark">Takieddine Drici</span>
+          </div>
+          <button class="navbar__close" id="navClose" aria-label="Close menu">×</button>
+        </div>
+        <ul class="navbar__list">
+          <li><a href="skills.html" class="nav-link">Skills</a></li>
+          <li><a href="experience.html" class="nav-link">Experience</a></li>
+          <li><a href="projects.html" class="nav-link">Projects</a></li>
+          <li><a href="cv.html" class="nav-link">CV</a></li>
+          <li><a href="contact.html" class="nav-link">Contact</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main id="content" tabindex="-1">
+    <section class="section project-hero" aria-labelledby="project-heading">
+      <div class="container">
+        <a href="projects.html" class="btn btn--ghost btn--small" style="margin-bottom:1.5rem; display:inline-flex; align-items:center; gap:0.4rem;">← Back to Projects</a>
+        <div class="project-hero__thumb" aria-hidden="true">
+          <svg class="project-hero__svg" viewBox="0 0 100 60" width="100%" height="320" role="img" aria-label="Chat workflow diagram">
+            <path d="M12 22 h36 a4 4 0 0 1 4 4 v18 a4 4 0 0 1 -4 4 h-36 a4 4 0 0 1 -4 -4 v-18 a4 4 0 0 1 4 -4 z" fill="none" stroke="#333" stroke-width="1.5" />
+            <path d="M52 14 h36 a4 4 0 0 1 4 4 v18 a4 4 0 0 1 -4 4 h-36 a4 4 0 0 1 -4 -4 v-18 a4 4 0 0 1 4 -4 z" fill="none" stroke="#333" stroke-width="1.5" />
+            <line x1="28" y1="34" x2="68" y2="22" stroke="#333" stroke-width="1.5" />
+            <circle cx="28" cy="34" r="2.5" fill="#333" />
+            <circle cx="68" cy="22" r="2.5" fill="#333" />
+          </svg>
+        </div>
+        <span class="project-hero__badge">Real build</span>
+        <h1 id="project-heading" class="project-hero__title">Personal AI Telegram Assistant</h1>
+        <p class="project-hero__desc">
+          A Telegram bot that processes text and voice messages and triggers rule-based
+          actions — built with the Telegram API, OpenAI, and n8n.
+        </p>
+        <div class="project-meta">
+          <div class="project-meta__row">
+            <span class="project-meta__label">Built with</span>
+            <span class="project-meta__value">Telegram API · OpenAI · n8n</span>
+          </div>
+          <div class="project-meta__row">
+            <span class="project-meta__label">Status</span>
+            <span class="project-meta__value">Built and working</span>
+          </div>
+        </div>
+        <div class="project-actions">
+          <a href="https://github.com/dricitakieddine" class="btn btn--ghost" target="_blank" rel="noopener">GitHub</a>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" style="padding-top:0;">
+      <div class="container">
+        <div class="workflow-diagram">
+          <h3 class="workflow-diagram__title">Workflow diagram</h3>
+          <svg class="workflow-diagram__svg" viewBox="0 0 100 60" width="560" height="260" role="img" aria-label="Chat workflow">
+            <path d="M12 22 h36 a4 4 0 0 1 4 4 v18 a4 4 0 0 1 -4 4 h-36 a4 4 0 0 1 -4 -4 v-18 a4 4 0 0 1 4 -4 z" fill="none" stroke="#333" stroke-width="1.5" />
+            <path d="M52 14 h36 a4 4 0 0 1 4 4 v18 a4 4 0 0 1 -4 4 h-36 a4 4 0 0 1 -4 -4 v-18 a4 4 0 0 1 4 -4 z" fill="none" stroke="#333" stroke-width="1.5" />
+            <line x1="28" y1="34" x2="68" y2="22" stroke="#333" stroke-width="1.5" />
+            <circle cx="28" cy="34" r="2.5" fill="none" stroke="#E10600" stroke-width="2" />
+            <circle cx="68" cy="22" r="2.5" fill="none" stroke="#E10600" stroke-width="2" />
+          </svg>
+        </div>
+
+        <div style="margin-top:3rem; display:grid; grid-template-columns:1fr 1fr; gap:3rem;">
+          <div>
+            <h3 style="font-family:'Space Grotesk',sans-serif; font-size:1.25rem; font-weight:800; color:#F5F5F5; margin-bottom:0.75rem;">Problem</h3>
+            <p style="color:#9A9A9A; font-size:1rem; line-height:1.7;">
+              Handling text and voice messages manually across Telegram was slow and
+              inconsistent.
+            </p>
+          </div>
+          <div>
+            <h3 style="font-family:'Space Grotesk',sans-serif; font-size:1.25rem; font-weight:800; color:#F5F5F5; margin-bottom:0.75rem;">Solution</h3>
+            <p style="color:#9A9A9A; font-size:1rem; line-height:1.7;">
+              A Telegram bot that processes text and voice messages and triggers rule-based
+              actions.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <div class="project-nav">
+      <a href="project-instagram.html" class="project-nav__link">Next: Instagram Content &amp; Growth System<span class="project-nav__arrow">→</span></a>
+      <a href="project-calendar.html" class="project-nav__link">← Previous: AI Google Calendar Assistant<span class="project-nav__arrow">→</span></a>
+    </div>
+  </main>
+
+  <footer class="footer" role="contentinfo">
+    <div class="container footer__inner">
+      <div class="footer__brand">
+        <img src="assets/photo.png" alt="Logo" class="footer__logo" width="32" height="32" loading="lazy" decoding="async" />
+        <span class="footer__wordmark">Takieddine Drici</span>
+      </div>
+      <p class="footer__copy">© 2026 Takieddine Drici. All rights reserved.</p>
+      <p class="footer__note">Built with plain HTML, CSS &amp; JS.</p>
+    </div>
+  </footer>
+
+  <div id="cursor" class="cursor" aria-hidden="true"></div>
+  <div id="cursorFollower" class="cursor-follower" aria-hidden="true"></div>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js" defer></script>
+  <script src="script.js" defer></script>
+</body>
+</html>
