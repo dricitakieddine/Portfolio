@@ -92,6 +92,7 @@
   </script>
 </head>
 <body>
+  <div class="noise-grid"></div>
   <div class="page-transition">
     <div class="page-transition__wipe"></div>
   </div>
@@ -138,25 +139,14 @@
 
   <header id="navbar" class="navbar" role="banner">
     <div class="navbar__inner container">
-      <a href="index.html" class="navbar__brand" aria-label="Takieddine Drici — home">
-        <img src="assets/photo.png" alt="Logo" class="navbar__logo" width="36" height="36" loading="eager" decoding="async" />
-        <span class="navbar__wordmark">Takieddine Drici</span>
-      </a>
-
-      <button class="navbar__toggle" id="navToggle" aria-expanded="false" aria-controls="navMenu" aria-label="Open menu">
-        <span class="navbar__toggle-bar"></span>
-        <span class="navbar__toggle-bar"></span>
-        <span class="navbar__toggle-bar"></span>
-      </button>
-
+      <div class="navbar__left">
+        <a href="index.html" class="navbar__brand" aria-label="Takieddine Drici — home">
+          <img src="assets/photo.png" alt="Logo" class="navbar__logo" width="34" height="34" loading="eager" decoding="async" />
+          <span class="navbar__wordmark">Takieddine Drici</span>
+        </a>
+        <a href="https://github.com/dricitakieddine" class="navbar__gh-link" target="_blank" rel="noopener">GitHub</a>
+      </div>
       <nav id="navMenu" class="navbar__menu" role="navigation">
-        <div class="navbar__menu-top">
-          <div class="navbar__menu-brand">
-            <img src="assets/photo.png" alt="Logo" class="navbar__menu-logo" width="36" height="36" loading="eager" decoding="async" />
-            <span class="navbar__menu-wordmark">Takieddine Drici</span>
-          </div>
-          <button class="navbar__close" id="navClose" aria-label="Close menu">×</button>
-        </div>
         <ul class="navbar__list">
           <li><a href="skills.html" class="nav-link">Skills</a></li>
           <li><a href="experience.html" class="nav-link">Experience</a></li>
@@ -165,6 +155,14 @@
           <li><a href="contact.html" class="nav-link">Contact</a></li>
         </ul>
       </nav>
+      <div class="navbar__right">
+        <a href="https://wa.me/213563249255?text=Hi%20Takieddine%2C%20I%27m%20reaching%20out%20from%20your%20portfolio!" class="navbar__wa-pill" target="_blank" rel="noopener">WhatsApp</a>
+      </div>
+      <button class="navbar__toggle" id="navToggle" aria-expanded="false" aria-controls="navMenu" aria-label="Open menu">
+        <span class="navbar__toggle-bar"></span>
+        <span class="navbar__toggle-bar"></span>
+        <span class="navbar__toggle-bar"></span>
+      </button>
     </div>
   </header>
 
@@ -173,18 +171,20 @@
     <section id="hero" class="section hero" aria-labelledby="hero-heading">
       <div class="container hero__grid">
         <div class="hero__content">
-          <span class="hero__kicker">AI Automation Engineer</span>
-          <h1 id="hero-heading" class="hero__title">AI Automation Engineer</h1>
-          <p class="hero__subtitle">n8n · APIs · AI Agents · Workflow Automation</p>
+          <span class="hero__kicker">Hey, I'm Takieddine Drici</span>
+          <h1 id="hero-heading" class="hero__title">I build AI automations <span class="hero__title-word">and workflows</span></h1>
           <p class="hero__sub">
             I build practical AI-powered workflows, assistants, and business
-            automations using n8n, APIs, and Python.
+            automations using n8n, APIs, and Python. Self-directed, remote-first,
+            consistent week after week.
           </p>
-          <p class="hero__location">Based in Algeria · Available for remote work</p>
+          <div class="hero__location">
+            <span class="location__dot" aria-hidden="true"></span>
+            Tébessa, Algeria · Available for remote work
+          </div>
           <div class="hero__cta">
-            <a href="projects.html" class="btn btn--red">View Work</a>
-            <a href="https://github.com/dricitakieddine" class="btn btn--ghost" target="_blank" rel="noopener">GitHub</a>
-            <a href="cv.html" class="btn btn--ghost btn--cv">Download CV</a>
+            <a href="https://wa.me/213563249255?text=Hi%20Takieddine%2C%20I%27m%20reaching%20out%20from%20your%20portfolio!" class="btn btn--red" target="_blank" rel="noopener">Chat on WhatsApp</a>
+            <a href="assets/Takieddine_Drici_CV.pdf" class="btn btn--ghost btn--cv" download>My Resume</a>
           </div>
         </div>
         <div class="hero__portrait-wrap">
@@ -195,51 +195,212 @@
             class="hero__portrait"
             width="400"
             height="400"
-            loading="lazy"
+            loading="eager"
             decoding="async"
           />
         </div>
       </div>
+      <div class="scroll-indicator" aria-hidden="true">
+        <span>Scroll</span>
+        <div class="scroll-line"></div>
+      </div>
     </section>
 
-    <!-- About -->
-    <section id="about" class="section about" aria-labelledby="about-heading">
+    <!-- Stat strip -->
+    <section class="section stat-strip" aria-labelledby="stats-heading">
+      <div class="container">
+        <div class="stat" data-count-up="3" data-suffix=" built projects"></div>
+        <div class="stat" data-count-up="3" data-suffix=" concept demos"></div>
+        <div class="stat" data-count-up="3" data-suffix=" languages"></div>
+      </div>
+    </section>
+
+    <!-- Selected Work -->
+    <section id="selected-work" class="section work" aria-labelledby="work-heading">
       <div class="container">
         <div class="section__header">
-          <h2 id="about-heading" class="section__title">About <span class="section__title-accent">me</span></h2>
+          <h2 id="work-heading" class="section__title">Selected <span class="section__title-accent">work</span></h2>
+          <p class="section__desc">Real builds and clearly labeled concept demos.</p>
         </div>
-        <div class="about__text">
-          <p class="about__para">
-            I build practical AI-powered workflows, assistants, and business
-            automations using n8n, APIs, and Python. Self-directed, remote-first,
-            consistent week after week. Based in Tébessa, Algeria — available for
-            remote work.
-          </p>
+
+        <article class="work__row" id="work-calendar">
+          <div class="work__frame">
+            <div class="work__frame--dots">
+              <span class="work__dot work__dot--red"></span>
+              <span class="work__dot work__dot--yellow"></span>
+              <span class="work__dot work__dot--green"></span>
+            </div>
+            <div class="work__address">calendar-assistant</div>
+            <img
+              src="assets/photo.png"
+              alt="AI Google Calendar Assistant workflow diagram"
+              class="work__thumb work__thumb--diagram"
+              width="640"
+              height="360"
+              loading="lazy"
+              decoding="async"
+            />
+          </div>
+          <div class="work__body">
+            <span class="work__badge work__badge--built">Built and working</span>
+            <h3 class="work__title">AI Google Calendar Assistant</h3>
+            <p class="work__desc">
+              Scheduling automation that validates calendar data and triggers
+              confirmations automatically.
+            </p>
+            <div class="work__meta">
+              <div class="work__meta__row">
+                <span class="work__meta__label">My role</span>
+                <span>Design · Build · Deploy</span>
+              </div>
+              <div class="work__meta__row">
+                <span class="work__meta__label">Stack</span>
+                <span>n8n · OpenAI · Google Calendar API</span>
+              </div>
+            </div>
+            <div class="work__cta">
+              <a href="project-calendar.html" class="btn btn--ghost">Read case study</a>
+            </div>
+          </div>
+        </article>
+
+        <article class="work__row" id="work-telegram">
+          <div class="work__frame">
+            <div class="work__frame--dots">
+              <span class="work__dot work__dot--red"></span>
+              <span class="work__dot work__dot--yellow"></span>
+              <span class="work__dot work__dot--green"></span>
+            </div>
+            <div class="work__address">telegram-assistant</div>
+            <img
+              src="assets/photo.png"
+              alt="Personal AI Telegram Assistant workflow diagram"
+              class="work__thumb work__thumb--diagram"
+              width="640"
+              height="360"
+              loading="lazy"
+              decoding="async"
+            />
+          </div>
+          <div class="work__body">
+            <span class="work__badge work__badge--built">Built and working</span>
+            <h3 class="work__title">Personal AI Telegram Assistant</h3>
+            <p class="work__desc">
+              Bot that processes text and voice messages and triggers rule-based
+              actions automatically.
+            </p>
+            <div class="work__meta">
+              <div class="work__meta__row">
+                <span class="work__meta__label">My role</span>
+                <span>Design · Build · Deploy</span>
+              </div>
+              <div class="work__meta__row">
+                <span class="work__meta__label">Stack</span>
+                <span>Telegram API · OpenAI · n8n</span>
+              </div>
+            </div>
+            <div class="work__cta">
+              <a href="project-telegram.html" class="btn btn--ghost">Read case study</a>
+            </div>
+          </div>
+        </article>
+
+        <article class="work__row" id="work-instagram">
+          <div class="work__frame">
+            <div class="work__frame--dots">
+              <span class="work__dot work__dot--red"></span>
+              <span class="work__dot work__dot--yellow"></span>
+              <span class="work__dot work__dot--green"></span>
+            </div>
+            <div class="work__address">instagram-growth</div>
+            <img
+              src="assets/photo.png"
+              alt="Instagram Content & Growth System workflow diagram"
+              class="work__thumb work__thumb--diagram"
+              width="640"
+              height="360"
+              loading="lazy"
+              decoding="async"
+            />
+          </div>
+          <div class="work__body">
+            <span class="work__badge work__badge--built">Built and working</span>
+            <h3 class="work__title">Instagram Content &amp; Growth System</h3>
+            <p class="work__desc">
+              30-day calendar and faceless content strategy for an AI-tools
+              audience.
+            </p>
+            <div class="work__meta">
+              <div class="work__meta__row">
+                <span class="work__meta__label">My role</span>
+                <span>Strategy · Content · Deploy</span>
+              </div>
+              <div class="work__meta__row">
+                <span class="work__meta__label">Stack</span>
+                <span>Canva · Content calendar · Audience research</span>
+              </div>
+            </div>
+            <div class="work__cta">
+              <a href="project-instagram.html" class="btn btn--ghost">Read case study</a>
+            </div>
+          </div>
+        </article>
+
+        <div class="work__cta" style="text-align:center; margin-top:2rem;">
+          <a href="projects.html" class="btn btn--red">View all projects</a>
         </div>
       </div>
     </section>
 
-    <!-- What I build (teaser) -->
-    <section id="what-i-build" class="section what-i-build" aria-labelledby="what-i-build-heading">
+    <!-- What I do -->
+    <section id="what-i-do" class="section what-i-do" aria-labelledby="what-i-do-heading">
       <div class="container">
         <div class="section__header">
-          <h2 id="what-i-build-heading" class="section__title">What I <span class="section__title-accent">build</span></h2>
+          <h2 id="what-i-do-heading" class="section__title">What I <span class="section__title-accent">do</span></h2>
           <p class="section__desc">Focused areas of automation work.</p>
         </div>
         <div class="builds__grid">
           <article class="build-card">
+            <div class="build-card__icon" aria-hidden="true">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect>
+                <line x1="3" y1="9" x2="21" y2="9"></line>
+                <line x1="9" y1="21" x2="9" y2="9"></line>
+              </svg>
+            </div>
             <h3 class="build__title">Business Workflow Automation</h3>
             <p class="build__desc">n8n workflows that connect APIs, spreadsheets, and business tools to eliminate repetitive manual work.</p>
           </article>
           <article class="build-card">
+            <div class="build-card__icon" aria-hidden="true">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <circle cx="12" cy="12" r="7"></circle>
+                <path d="M16 8s-1 2-2 2s-2 -2-4 -2s-4 2-6 2"></path>
+                <path d="M9 12l2 2l4 -4"></path>
+              </svg>
+            </div>
             <h3 class="build__title">AI Assistants</h3>
             <p class="build__desc">AI-powered bots that process text and voice, integrate with calendars and messaging, and trigger rule-based actions.</p>
           </article>
           <article class="build-card">
+            <div class="build-card__icon" aria-hidden="true">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M10 13a5 5 0 0 0 7.54.54l3-3a2.828 2.828 0 1 1 4 4l-3-3A5 5 0 0 0 13 13z"></path>
+                <polyline points="22 12 18 12 15 15 9 3 2 12"></polyline>
+              </svg>
+            </div>
             <h3 class="build__title">API Integrations</h3>
             <p class="build__desc">Custom integrations between services using REST APIs, webhooks, and JSON to move data where it needs to go.</p>
           </article>
           <article class="build-card">
+            <div class="build-card__icon" aria-hidden="true">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
+                <circle cx="9" cy="7" r="4"></circle>
+                <path d="M23 21v-2a4 4 0 0 0-3-3.47"></path>
+                <path d="M16 3.13a4 4 0 0 1 0 7.74"></path>
+              </svg>
+            </div>
             <h3 class="build__title">AI Content Workflows</h3>
             <p class="build__desc">Content planning, copywriting, and publishing systems that keep audiences engaged on a consistent cadence.</p>
           </article>
@@ -247,12 +408,38 @@
       </div>
     </section>
 
-    <!-- CTA to Contact -->
+    <!-- Tech & tools marquee -->
+    <section class="section marquee" aria-label="Tech and tools">
+      <div class="container">
+        <div class="marquee__track" id="marqueeTrack">
+          <div class="marquee__item marquee__item--icon"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon@v2.16.0/icons/n8n/n8n-original.svg" alt="n8n" class="marquee__icon" width="16" height="16" loading="lazy" onerror="this.style.display='none'; this.nextElementSibling.style.display='inline-flex';"><span class="marquee__dot" style="display:none;"></span><span>n8n</span></div>
+          <div class="marquee__item marquee__item--icon"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon@v2.16.0/icons/openai/openai-original.svg" alt="OpenAI API" class="marquee__icon" width="16" height="16" loading="lazy" onerror="this.style.display='none'; this.nextElementSibling.style.display='inline-flex';"><span class="marquee__dot" style="display:none;"></span><span>OpenAI API</span></div>
+          <div class="marquee__item marquee__item--text"><span class="marquee__dot"></span>Python</div>
+          <div class="marquee__item marquee__item--text"><span class="marquee__dot"></span>REST APIs</div>
+          <div class="marquee__item marquee__item--text"><span class="marquee__dot"></span>Webhooks</div>
+          <div class="marquee__item marquee__item--text"><span class="marquee__dot"></span>JSON</div>
+          <div class="marquee__item marquee__item--icon"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon@v2.16.0/icons/googlecloud/googlecloud-original.svg" alt="Google Sheets" class="marquee__icon" width="16" height="16" loading="lazy" onerror="this.style.display='none'; this.nextElementSibling.style.display='inline-flex';"><span class="marquee__dot" style="display:none;"></span><span>Google Sheets</span></div>
+          <div class="marquee__item marquee__item--icon"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon@v2.16.0/icons/googlecalendar/googlecalendar-original.svg" alt="Google Calendar API" class="marquee__icon" width="16" height="16" loading="lazy" onerror="this.style.display='none'; this.nextElementSibling.style.display='inline-flex';"><span class="marquee__dot" style="display:none;"></span><span>Google Calendar API</span></div>
+          <div class="marquee__item marquee__item--icon"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon@v2.16.0/icons/telegram/telegram-plain.svg" alt="Telegram API" class="marquee__icon" width="16" height="16" loading="lazy" onerror="this.style.display='none'; this.nextElementSibling.style.display='inline-flex';"><span class="marquee__dot" style="display:none;"></span><span>Telegram API</span></div>
+          <div class="marquee__item marquee__item--icon"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon@v2.16.0/icons/git/git-original.svg" alt="Git" class="marquee__icon" width="16" height="16" loading="lazy" onerror="this.style.display='none'; this.nextElementSibling.style.display='inline-flex';"><span class="marquee__dot" style="display:none;"></span><span>Git</span></div>
+          <div class="marquee__item marquee__item--icon"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon@v2.16.0/icons/github/github-original.svg" alt="GitHub" class="marquee__icon" width="16" height="16" loading="lazy" onerror="this.style.display='none'; this.nextElementSibling.style.display='inline-flex';"><span class="marquee__dot" style="display:none;"></span><span>GitHub</span></div>
+          <div class="marquee__item marquee__item--icon"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon@v2.16.0/icons/canva/canva-original.svg" alt="Canva" class="marquee__icon" width="16" height="16" loading="lazy" onerror="this.style.display='none'; this.nextElementSibling.style.display='inline-flex';"><span class="marquee__dot" style="display:none;"></span><span>Canva</span></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Closing CTA -->
     <section class="section cta-band" aria-labelledby="cta-heading">
       <div class="container">
-        <h2 id="cta-heading" class="cta-band__title">Have a repetitive process?</h2>
-        <p class="cta-band__desc">Let's turn it into an automation.</p>
-        <a href="contact.html" class="btn btn--red">Contact me</a>
+        <h2 id="cta-heading" class="cta-band__title">Have a project in mind?</h2>
+        <p class="cta-band__desc">
+          Let's turn your repetitive process into an automation that actually
+          runs — week after week.
+        </p>
+        <div class="cta-band__actions" style="display:flex; gap:1rem; justify-content:center; flex-wrap:wrap;">
+          <a href="https://wa.me/213563249255?text=Hi%20Takieddine%2C%20I%27m%20reaching%20out%20from%20your%20portfolio!" class="btn btn--red" target="_blank" rel="noopener">Chat on WhatsApp</a>
+          <a href="mailto:dricitakieddine75@gmail.com" class="btn btn--ghost">Or write to me</a>
+        </div>
       </div>
     </section>
   </main>
@@ -263,10 +450,31 @@
         <img src="assets/photo.png" alt="Logo" class="footer__logo" width="32" height="32" loading="lazy" decoding="async" />
         <span class="footer__wordmark">Takieddine Drici</span>
       </div>
-      <p class="footer__copy">© 2026 Takieddine Drici. All rights reserved.</p>
-      <p class="footer__note">Built with plain HTML, CSS &amp; JS.</p>
+      <nav class="footer__nav" aria-label="Navigate">
+        <a href="skills.html">Skills</a>
+        <a href="experience.html">Experience</a>
+        <a href="projects.html">Projects</a>
+        <a href="cv.html">CV</a>
+        <a href="contact.html">Contact</a>
+      </nav>
+      <nav class="footer__check" aria-label="Check my">
+        <a href="https://github.com/dricitakieddine" target="_blank" rel="noopener">GitHub</a>
+        <a href="assets/Takieddine_Drici_CV.pdf" download>CV PDF</a>
+      </nav>
+      <div class="footer__contact">
+        <a href="mailto:dricitakieddine75@gmail.com">dricitakieddine75@gmail.com</a>
+        <a href="https://wa.me/213563249255?text=Hi%20Takieddine%2C%20I%27m%20reaching%20out%20from%20your%20portfolio!" target="_blank" rel="noopener">+213 563 249 255</a>
+      </div>
+      <div class="footer__bottom">
+        © 2026 Takieddine Drici · Tébessa, Algeria
+      </div>
     </div>
   </footer>
+
+  <div class="whatsapp-float" aria-hidden="true">
+    <span>💬</span>
+    <span>WhatsApp</span>
+  </div>
 
   <div id="cursor" class="cursor" aria-hidden="true"></div>
   <div id="cursorFollower" class="cursor-follower" aria-hidden="true"></div>

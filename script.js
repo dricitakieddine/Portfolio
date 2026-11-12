@@ -195,7 +195,7 @@ function initIntro() {
     if (intro) intro.style.display = "none";
     if (typewriter) {
       typewriter.style.borderRight = "none";
-      typewriter.textContent = "AI Automation Engineer";
+      typewriter.textContent = "I build AI automations & workflows";
     }
     return;
   }
@@ -232,7 +232,7 @@ function initIntro() {
 function startTypewriter() {
   const typewriter = $("#typewriter");
   if (!typewriter) return;
-  const words = ["AI Automation Engineer", "Workflow Builder", "AI Assistant Developer"];
+  const words = ["I build AI automations & workflows", "AI Automation Engineer", "Workflow Builder"];
   let wordIndex = 0;
   let charIndex = 0;
   let isDeleting = false;
@@ -263,8 +263,78 @@ function startTypewriter() {
     }
   }
 
-  typewriter.style.borderRight = prefersReduced ? "none" : "2px solid #E10600";
+  typewriter.style.borderRight = prefersReduced ? "none" : "2px solid var(--accent)";
   type();
+}
+
+/* ---------- Count-up stats (index stat strip) ---------- */
+function initCountUp() {
+  $$("[data-count-up]").forEach((el) => {
+    const target = parseInt(el.getAttribute("data-count-up"), 10) || 0;
+    const suffix = el.getAttribute("data-suffix") || "";
+
+    if (prefersReduced || !window.ScrollTrigger || !window.gsap) {
+      el.textContent = target + suffix;
+      return;
+    }
+
+    window.ScrollTrigger.create({
+      trigger: el,
+      start: "top 85%",
+      once: true,
+      onEnter: () => {
+        const obj = { val: 0 };
+        window.gsap.to(obj, {
+          val: target,
+          duration: 1.4,
+          ease: "power2.out",
+          snap: { val: 1 },
+          onUpdate: () => {
+            el.textContent = Math.round(obj.val) + suffix;
+          },
+        });
+      },
+    });
+  });
+}
+
+/* ---------- Marquee (index tech tools) ---------- */
+function initMarquee() {
+  const track = $(".marquee__track");
+  if (!track) return;
+
+  const itemsHtml = track.innerHTML;
+  // Duplicate for seamless loop
+  track.innerHTML = itemsHtml + itemsHtml;
+
+  if (!prefersReduced) {
+    track.classList.add("marquee--moving");
+  }
+}
+
+/* ---------- Projects filter tabs (projects page) ---------- */
+function initProjectFilters() {
+  const tabs = $$(".filter-tab");
+  const cards = $$(".project-card");
+
+  tabs.forEach((tab) => {
+    tab.addEventListener("click", () => {
+      const filter = tab.getAttribute("data-filter");
+
+      tabs.forEach((t) => {
+        t.classList.remove("is-active");
+      });
+      tab.classList.add("is-active");
+
+      cards.forEach((card) => {
+        if (filter === "all" || card.getAttribute("data-category") === filter) {
+          card.classList.remove("is-hidden");
+        } else {
+          card.classList.add("is-hidden");
+        }
+      });
+    });
+  });
 }
 
 /* ---------- GSAP ScrollTrigger setup ---------- */
@@ -277,7 +347,7 @@ function initScrollReveal() {
 
   $$(".section").forEach((section) => {
     const children = section.querySelectorAll(
-      ".skills__group, .timeline__item, .project-card, .cred-item, .build-card, .process__step, .contact__btn, .form__row"
+      ".skills__group, .timeline__item, .project-card, .cred-item, .build-card, .process__step, .contact__btn, .form__row, .work__row"
     );
 
     window.ScrollTrigger.create({
@@ -308,12 +378,19 @@ function initScrollReveal() {
   // Experience line draws itself
   const timelineLine = $(".timeline__line");
   if (timelineLine) {
+    const innerLine = timelineLine.querySelector("::before") ? null : timelineLine;
     window.ScrollTrigger.create({
       trigger: "#experience",
-      start: "top 70%",
+      start: "top 75%",
       once: true,
       onEnter: () => {
-        window.gsap.to(timelineLine, { scaleY: 1, duration: 1, ease: "power2.out" });
+        window.gsap.to(timelineLine, {
+          "--draw": 1,
+          duration: 1,
+          ease: "power2.out",
+        });
+        // Fallback: add a draw class
+        timelineLine.classList.add("draw");
       },
     });
   }
@@ -448,6 +525,9 @@ if (contactForm) {
 function init() {
   initIntro();
   initScrollReveal();
+  initCountUp();
+  initMarquee();
+  initProjectFilters();
   initTilt();
 }
 
