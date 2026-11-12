@@ -125,7 +125,7 @@ magnetic.forEach((el) => {
 
 /* ---------- Typewriter (hero) ---------- */
 const typewriter = $("#typewriter");
-const words = ["Social Media Manager", "Content Creator", "Automation Builder"];
+const words = ["AI Automation Engineer", "Workflow Builder", "AI Assistant Developer"];
 let wordIndex = 0;
 let charIndex = 0;
 let isDeleting = false;
@@ -299,37 +299,19 @@ function initTilt() {
   });
 }
 
-/* ---------- Animated counters (About facts) ---------- */
-function initCounters() {
-  $$("[data-fact]").forEach((fact) => {
-    const numberEl = fact.querySelector("[data-count]");
-    const suffixEl = fact.querySelector(".fact__suffix");
-    if (!numberEl) return;
-    const target = parseInt(numberEl.getAttribute("data-count") || numberEl.textContent, 10) || 0;
-    const suffix = suffixEl ? suffixEl.textContent : "";
+/* ---------- Experiments toggle ---------- */
+const experimentsToggle = $("#experimentsToggle");
+const experimentsList = $("#experimentsList");
 
-    if (prefersReduced || !window.ScrollTrigger || !window.gsap) {
-      numberEl.textContent = target + suffix;
-      return;
+if (experimentsToggle && experimentsList) {
+  experimentsToggle.addEventListener("click", () => {
+    const expanded = experimentsToggle.getAttribute("aria-expanded") === "true";
+    experimentsToggle.setAttribute("aria-expanded", !expanded);
+    if (expanded) {
+      experimentsList.setAttribute("hidden", "");
+    } else {
+      experimentsList.removeAttribute("hidden");
     }
-
-    window.ScrollTrigger.create({
-      trigger: fact,
-      start: "top 82%",
-      once: true,
-      onEnter: () => {
-        const tweenObj = { val: 0 };
-        gsap.to(tweenObj, {
-          val: target,
-          duration: 1.4,
-          ease: "power2.out",
-          snap: { val: 1 },
-          onUpdate: () => {
-            numberEl.textContent = Math.round(tweenObj.val) + suffix;
-          },
-        });
-      },
-    });
   });
 }
 
@@ -431,7 +413,6 @@ window.addEventListener("keydown", (e) => {
 function init() {
   initIntro();
   initScrollReveal();
-  initCounters();
   initTilt();
 }
 
