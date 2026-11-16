@@ -8,113 +8,146 @@ const $$ = (sel, root = document) => Array.from(root.querySelectorAll(sel));
 
 const prefersReduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
+/* ---------- Add 'js' class to html (progressive enhancement safety net) ---------- */
+try {
+  document.documentElement.classList.add("js");
+} catch (e) {
+  // ignore
+}
+
 /* ---------- Intro overlay (first session visit, under 1.2s) ---------- */
 function initIntro() {
-  const intro = $("#intro");
-  if (!intro) return;
-
-  let shown = false;
   try {
-    shown = sessionStorage.getItem("portfolio_intro_shown") === "1";
+    const intro = $("#intro");
+    if (!intro) return;
+
+    let shown = false;
+    try {
+      shown = sessionStorage.getItem("portfolio_intro_shown") === "1";
+    } catch (e) {
+      shown = false;
+    }
+
+    if (shown || prefersReduced) {
+      intro.classList.add("is-hidden");
+      return;
+    }
+
+    try {
+      sessionStorage.setItem("portfolio_intro_shown", "1");
+    } catch (e) {
+      // ignore
+    }
+
+    // Failsafe: hide intro after 1.2s regardless
+    setTimeout(() => {
+      intro.classList.add("is-hidden");
+    }, 1200);
+
+    const introLogo = $("#introLogo");
+    const introDrawRing = $("#introDrawRing");
+    const introCircle = introDrawRing ? introDrawRing.querySelector("circle") : null;
+
+    if (!introLogo || !introCircle) {
+      intro.classList.add("is-hidden");
+      return;
+    }
+
+    // Simple CSS animation fallback (no GSAP dependency)
+    introLogo.style.transition = "transform 0.5s ease, opacity 0.5s ease";
+    introLogo.style.transform = "scale(1)";
+    introLogo.style.opacity = "1";
+
+    introText = $(".intro__text");
+    if (introText) {
+      introText.style.transition = "opacity 0.4s ease";
+      introText.style.opacity = "1";
+    }
+
+    setTimeout(() => {
+      intro.classList.add("is-hidden");
+    }, 1200);
   } catch (e) {
-    shown = false;
+    const intro = $("#intro");
+    if (intro) intro.classList.add("is-hidden");
   }
-
-  const introLogo = $("#introLogo");
-  const introDrawRing = $("#introDrawRing");
-  const introCircle = introDrawRing ? introDrawRing.querySelector("circle") : null;
-  const introText = $(".intro__text");
-
-  if (shown || prefersReduced) {
-    intro.classList.add("is-hidden");
-    return;
-  }
-
-  try {
-    sessionStorage.setItem("portfolio_intro_shown", "1");
-  } catch (e) {
-    // ignore
-  }
-
-  if (!introLogo || !introCircle) {
-    intro.classList.add("is-hidden");
-    return;
-  }
-
-  const tl = gsap.timeline({ defaults: { ease: "power2.out" } });
-  tl.to(introLogo, { scale: 1, opacity: 1, duration: 0.5, delay: 0.2 })
-    .to(introCircle, { strokeDashoffset: 0, duration: 0.6, ease: "power2.inOut" }, "-=0.3")
-    .to(introText, { opacity: 1, duration: 0.4 }, "-=0.2")
-    .to(intro, { opacity: 0, visibility: "hidden", duration: 0.5, delay: 0.3 })
-    .set(intro, { display: "none" });
 }
 
 /* ---------- Reveal on scroll (fade up) ---------- */
 function initReveal() {
-  if (!window.gsap || !window.ScrollTrigger) {
-    // fallback: reveal all via IntersectionObserver
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach((entry) => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add("is-visible");
-          observer.unobserve(entry.target);
-        }
-      });
-    }, { threshold: 0.15 });
-    $$(".reveal").forEach((el) => observer.observe(el));
-    return;
-  }
+  try {
+    const elements = $$(".reveal");
 
-  window.gsap.registerPlugin(window.ScrollTrigger);
-
-  $$(".reveal").forEach((el) => {
-    window.ScrollTrigger.create({
-      trigger: el,
-      start: "top 85%",
-      once: true,
-      onEnter: () => {
-        window.gsap.to(el, { y: 0, opacity: 1, duration: 0.6, ease: "power2.out" });
-      },
-    });
-  });
-
-  // Experience timeline line draw
-  const timelineLine = $(".timeline__line");
-  if (timelineLine) {
-    window.ScrollTrigger.create({
-      trigger: "#experience",
-      start: "top 75%",
-      once: true,
-      onEnter: () => {
-        timelineLine.classList.add("draw");
-        window.gsap.to(timelineLine, { "--draw": 1, duration: 0.8, ease: "power2.out" });
-      },
-    });
-  }
-
-  // Workflow diagram draw (project detail pages)
-  const diagram = $(".workflow-diagram__svg");
-  if (diagram) {
-    const paths = diagram.querySelectorAll("path, line, circle, rect");
-    paths.forEach((p) => {
-      const len = p.getTotalLength ? p.getTotalLength() : 0;
-      if (len > 0) {
-        p.style.strokeDasharray = len;
-        p.style.strokeDashoffset = len;
-      }
-    });
-    window.ScrollTrigger.create({
-      trigger: ".workflow-diagram",
-      start: "top 85%",
-      once: true,
-      onEnter: () => {
-        paths.forEach((p) => {
-          const len = p.getTotalLength ? p.getTotalLength() : 0;
-          if (len > 0) {
-            window.gsap.to(p, { strokeDashoffset: 0, duration: 0.8, ease: "power2.out" });
+    if (!window.gsap || !window.ScrollTrigger) {
+      // Fallback: reveal all via IntersectionObserver (no GSAP dependency)
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add("is-visible");
+            observer.unobserve(entry.target);
           }
         });
-      },
+      }, { threshold: 0.15 });
+      elements.forEach((el) => observer.observe(el));
+      return;
+    }
+
+    window.gsap.registerPlugin(window.ScrollTrigger);
+
+    elements.forEach((el) => {
+      window.ScrollTrigger.create({
+        trigger: el,
+        start: "top 85%",
+        once: true,
+        onEnter: () => {
+          window.gsap.to(el, { y: 0, opacity: 1, duration: 0.6, ease: "power2.out" });
+        },
+      });
+    });
+
+    // Experience timeline line draw
+    const timelineLine = $(".timeline__line");
+    if (timelineLine) {
+      window.ScrollTrigger.create({
+        trigger: "#experience",
+        start: "top 75%",
+        once: true,
+        onEnter: () => {
+          timelineLine.classList.add("draw");
+          window.gsap.to(timelineLine, { "--draw": 1, duration: 0.8, ease: "power2.out" });
+        },
+      });
+    }
+
+    // Workflow diagram draw (project detail pages)
+    const diagram = $(".workflow-diagram__svg");
+    if (diagram) {
+      const paths = diagram.querySelectorAll("path, line, circle, rect");
+      paths.forEach((p) => {
+        const len = p.getTotalLength ? p.getTotalLength() : 0;
+        if (len > 0) {
+          p.style.strokeDasharray = len;
+          p.style.strokeDashoffset = len;
+        }
+      });
+      window.ScrollTrigger.create({
+        trigger: ".workflow-diagram",
+        start: "top 85%",
+        once: true,
+        onEnter: () => {
+          paths.forEach((p) => {
+            const len = p.getTotalLength ? p.getTotalLength() : 0;
+            if (len > 0) {
+              window.gsap.to(p, { strokeDashoffset: 0, duration: 0.8, ease: "power2.out" });
+            }
+          });
+        },
+      });
+    }
+  } catch (e) {
+    // Ensure all reveal elements are visible even if GSAP fails
+    $$(".reveal").forEach((el) => {
+      el.classList.add("is-visible");
     });
   }
 }
