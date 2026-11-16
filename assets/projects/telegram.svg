@@ -1,0 +1,85 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 500" width="800" height="500" role="img" aria-label="Telegram workflow illustration">
+  <defs>
+    <style>
+      .node { fill: #1B2226; stroke: #E10600; stroke-width: 2; }
+      .node.pulse { animation: pulse 2s ease-in-out infinite; }
+      .line { fill: none; stroke: #333; stroke-width: 2; }
+      .line.draw { stroke-dasharray: 100; stroke-dashoffset: 100; animation: drawLine 1s ease-out forwards; }
+      .text { font-family: system-ui, -apple-system, Segoe UI, Roboto, sans-serif; font-size: 12px; fill: #F2F4F5; }
+      .text-muted { fill: #8A9499; font-size: 11px; }
+      .bubble-user { fill: #E10600; }
+      .bubble-bot { fill: #161C1F; stroke: #222; stroke-width: 1; }
+      @keyframes pulse {
+        0%, 100% { r: 6; opacity: 1; }
+        50% { r: 9; opacity: 0.6; }
+      }
+      @keyframes drawLine {
+        to { stroke-dashoffset: 0; }
+      }
+      @media (prefers-reduced-motion: reduce) {
+        .node.pulse { animation: none; r: 6; opacity: 1; }
+        .line.draw { stroke-dashoffset: 0; animation: none; }
+      }
+    </style>
+  </defs>
+
+  <!-- Card background -->
+  <rect x="0" y="0" width="800" height="500" rx="16" fill="#101517" stroke="#1A1A1A" stroke-width="1"/>
+
+  <!-- Left: phone frame -->
+  <rect x="50" y="80" width="260" height="380" rx="24" fill="#0A0A0A" stroke="#222" stroke-width="2"/>
+  <rect x="140" y="30" width="80" height="12" rx="6" fill="#222"/>
+  <!-- chat header -->
+  <rect x="60" y="130" width="240" height="50" fill="#161C1F"/>
+  <text x="80" y="155" class="text">Chat</text>
+  <text x="220" y="155" class="text-muted">•••</text>
+
+  <!-- voice message bubble -->
+  <rect x="140" y="220" width="100" height="40" rx="10" class="bubble-user"/>
+  <circle cx="220" cy="240" r="4" fill="#F2F4F5"/>
+  <circle cx="228" cy="240" r="2" fill="#F2F4F5" opacity="0.5"/>
+  <circle cx="234" cy="240" r="2" fill="#F2F4F5" opacity="0.3"/>
+
+  <!-- text message bubble -->
+  <rect x="80" y="280" width="120" height="36" rx="10" class="bubble-bot"/>
+  <text x="100" y="300" class="text-muted">Can you reschedule?</text>
+
+  <!-- bot reply bubble -->
+  <rect x="160" y="340" width="120" height="40" rx="10" fill="#161C1F" stroke="#222" stroke-width="1"/>
+  <text x="180" y="360" class="text-muted">Rescheduled for Friday</text>
+
+  <!-- Connector: phone -> node flow -->
+  <line class="line draw" x1="330" y1="250" x2="420" y2="250"/>
+
+  <!-- Node: Telegram Trigger -->
+  <circle cx="440" cy="250" r="8" class="node pulse"/>
+  <text x="456" y="255" class="text-muted">Telegram Trigger</text>
+
+  <!-- Connector: trigger -> stt -->
+  <line class="line draw" x1="448" y1="250" x2="520" y2="250"/>
+
+  <!-- Node: Speech to text -->
+  <circle cx="528" cy="250" r="8" class="node pulse"/>
+  <text x="544" y="255" class="text-muted">Speech to text</text>
+
+  <!-- Connector: stt -> openai -->
+  <line class="line draw" x1="536" y1="250" x2="608" y2="250"/>
+
+  <!-- Node: OpenAI -->
+  <circle cx="616" cy="250" r="8" class="node pulse"/>
+  <text x="632" y="255" class="text-muted">OpenAI</text>
+
+  <!-- Connector: openai -> rules -->
+  <line class="line draw" x1="624" y1="250" x2="696" y2="250"/>
+
+  <!-- Node: Rules -->
+  <circle cx="704" cy="250" r="8" class="node pulse"/>
+  <text x="712" y="238" class="text-muted" style="text-anchor:end;">Rules</text>
+
+  <!-- Connector: rules -> reply -->
+  <line class="line draw" x1="712" y1="250" x2="752" y2="250"/>
+
+  <!-- Node: Reply -->
+  <circle cx="760" cy="250" r="8" class="node pulse"/>
+  <text x="760" y="270" class="text-muted" style="text-anchor:middle;">Reply</text>
+</svg>

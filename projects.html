@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
 
   <script>
     window.SITE_URL = "https://dricitakieddine.github.io/Portfolio/";
@@ -63,13 +63,9 @@
   </script>
 </head>
 <body>
-  <div class="noise-grid"></div>
-  <div class="page-transition">
-    <div class="page-transition__wipe"></div>
-  </div>
+  <div class="page-fade"></div>
 
   <div id="intro" class="intro">
-    <div class="intro__bg"></div>
     <div class="intro__logo-wrap">
       <svg
         class="intro__draw-ring"
@@ -102,22 +98,15 @@
     <div class="intro__text">Takieddine Drici</div>
   </div>
 
-  <div class="progress-wrap" aria-hidden="true">
-    <div id="progressBar" class="progress-bar"></div>
-  </div>
-
-  <a href="#content" class="skip-link">Skip to content</a>
-
   <header id="navbar" class="navbar" role="banner">
     <div class="navbar__inner container">
-      <div class="navbar__left">
-        <a href="index.html" class="navbar__brand" aria-label="Takieddine Drici — home">
-          <img src="assets/photo.png" alt="Logo" class="navbar__logo" width="34" height="34" loading="eager" decoding="async" />
+      <div class="navbar__brand">
+        <a href="index.html" class="navbar__brand-link" aria-label="Takieddine Drici — home">
+          <img src="assets/photo.png" alt="Logo" class="navbar__logo" width="36" height="36" loading="eager" decoding="async" />
           <span class="navbar__wordmark">Takieddine Drici</span>
         </a>
-        <a href="https://github.com/dricitakieddine" class="navbar__gh-link" target="_blank" rel="noopener">GitHub</a>
       </div>
-      <nav id="navMenu" class="navbar__menu" role="navigation">
+      <nav class="navbar__links" role="navigation">
         <ul class="navbar__list">
           <li><a href="skills.html" class="nav-link">Skills</a></li>
           <li><a href="experience.html" class="nav-link">Experience</a></li>
@@ -129,16 +118,40 @@
       <div class="navbar__right">
         <a href="https://wa.me/213563249255?text=Hi%20Takieddine%2C%20I%27m%20reaching%20out%20from%20your%20portfolio!" class="navbar__wa-pill" target="_blank" rel="noopener">WhatsApp</a>
       </div>
-      <button class="navbar__toggle" id="navToggle" aria-expanded="false" aria-controls="navMenu" aria-label="Open menu">
-        <span class="navbar__toggle-bar"></span>
-        <span class="navbar__toggle-bar"></span>
-        <span class="navbar__toggle-bar"></span>
+      <button class="navbar__toggle" id="navToggle" aria-expanded="false" aria-controls="mobileMenu" aria-label="Open menu">
+        <span class="navbar__toggle-line"></span>
+        <span class="navbar__toggle-line"></span>
+        <span class="navbar__toggle-line"></span>
       </button>
     </div>
   </header>
 
+  <div class="mobile-menu" id="mobileMenu" role="navigation">
+    <div class="mobile-menu__header">
+      <div class="mobile-menu__brand">
+        <img src="assets/photo.png" alt="Logo" class="mobile-menu__logo" width="34" height="34" loading="eager" decoding="async" />
+        <span class="mobile-menu__wordmark">Takieddine Drici</span>
+      </div>
+      <button class="mobile-menu__close" id="navClose" aria-label="Close menu">
+        <div class="mobile-menu__close-line"></div>
+      </button>
+    </div>
+    <div class="mobile-menu__list">
+      <a href="skills.html" class="mobile-menu__nav-link"><span class="mobile-menu__number">01</span>Skills</a>
+      <a href="experience.html" class="mobile-menu__nav-link"><span class="mobile-menu__number">02</span>Experience</a>
+      <a href="projects.html" class="mobile-menu__nav-link"><span class="mobile-menu__number">03</span>Projects</a>
+      <a href="cv.html" class="mobile-menu__nav-link"><span class="mobile-menu__number">04</span>CV</a>
+      <a href="contact.html" class="mobile-menu__nav-link"><span class="mobile-menu__number">05</span>Contact</a>
+    </div>
+    <div class="mobile-menu__contact">
+      <div class="mobile-menu__contact-title">Get in touch</div>
+      <a href="mailto:dricitakieddine75@gmail.com" class="mobile-menu__contact-item">dricitakieddine75@gmail.com</a>
+      <a href="https://wa.me/213563249255?text=Hi%20Takieddine%2C%20I%27m%20reaching%20out%20from%20your%20portfolio!" class="mobile-menu__contact-item mobile-menu__contact-item--wa" target="_blank" rel="noopener">WhatsApp</a>
+    </div>
+  </div>
+
   <main id="content" tabindex="-1">
-    <section class="section page-title" aria-labelledby="page-heading">
+    <section class="section page-title reveal" aria-labelledby="page-heading">
       <div class="container">
         <div class="page-title__wrap">
           <span class="page-title__number">03</span>
@@ -148,7 +161,7 @@
       </div>
     </section>
 
-    <section id="projects" class="section projects" aria-labelledby="projects-heading">
+    <section id="projects" class="section projects reveal" aria-labelledby="projects-heading">
       <div class="container">
         <div class="section__header">
           <h2 id="projects-heading" class="section__title">Projects <span class="section__title-accent">&amp; portfolio</span></h2>
@@ -162,25 +175,17 @@
         </div>
 
         <div class="projects__grid" id="projectsGrid">
-          <article class="project-card project-card--featured" data-tilt data-category="built">
+          <article class="project-card project-card--featured reveal" data-category="built">
             <div class="project__thumb-wrap">
-              <svg class="project__thumb project__thumb--workflow" viewBox="0 0 100 60" aria-label="Calendar workflow preview">
-                <rect x="10" y="7" w="80" h="10" rx="2" fill="none" stroke="#333" />
-                <line x1="30" y1="24" x2="70" y2="24" stroke="#333" stroke-width="1.5" />
-                <line x1="30" y1="40" x2="70" y2="40" stroke="#333" stroke-width="1.5" />
-                <line x1="30" y1="24" x2="30" y2="40" stroke="#333" stroke-width="1.5" />
-                <line x1="50" y1="24" x2="50" y2="40" stroke="#333" stroke-width="1.5" />
-                <line x1="70" y1="24" x2="70" y2="40" stroke="#333" stroke-width="1.5" />
-                <circle cx="30" cy="24" r="2.5" fill="#E10600" />
-                <circle cx="50" cy="24" r="2.5" fill="#E10600" />
-                <circle cx="70" cy="24" r="2.5" fill="#E10600" />
-                <circle cx="30" cy="40" r="2.5" fill="#E10600" />
-                <circle cx="50" cy="40" r="2.5" fill="#E10600" />
-                <circle cx="70" cy="40" r="2.5" fill="#E10600" />
-              </svg>
-              <div class="project__overlay">
-                <span class="project__view">View case</span>
-              </div>
+              <img
+                src="assets/projects/calendar.svg"
+                alt="AI Google Calendar Assistant workflow illustration"
+                class="work__thumb"
+                width="640"
+                height="360"
+                loading="lazy"
+              />
+              <span class="concept-badge"></span>
             </div>
             <div class="project__body">
               <h3 class="project__title">AI Google Calendar Assistant</h3>
@@ -193,18 +198,17 @@
             </div>
           </article>
 
-          <article class="project-card project-card--featured" data-tilt data-category="built">
+          <article class="project-card project-card--featured reveal" data-category="built">
             <div class="project__thumb-wrap">
-              <svg class="project__thumb project__thumb--workflow" viewBox="0 0 100 60" aria-label="Chat workflow preview">
-                <path d="M12 22 h36 a4 4 0 0 1 4 4 v18 a4 4 0 0 1 -4 4 h-36 a4 4 0 0 1 -4 -4 v-18 a4 4 0 0 1 4 -4 z" fill="none" stroke="#333" stroke-width="1.5" />
-                <path d="M52 14 h36 a4 4 0 0 1 4 4 v18 a4 4 0 0 1 -4 4 h-36 a4 4 0 0 1 -4 -4 v-18 a4 4 0 0 1 4 -4 z" fill="none" stroke="#E10600" stroke-width="1.5" />
-                <line x1="28" y1="34" x2="68" y2="22" stroke="#333" stroke-width="1.5" />
-                <circle cx="28" cy="34" r="2.5" fill="#E10600" />
-                <circle cx="68" cy="22" r="2.5" fill="#E10600" />
-              </svg>
-              <div class="project__overlay">
-                <span class="project__view">View case</span>
-              </div>
+              <img
+                src="assets/projects/telegram.svg"
+                alt="Personal AI Telegram Assistant workflow illustration"
+                class="work__thumb"
+                width="640"
+                height="360"
+                loading="lazy"
+              />
+              <span class="concept-badge"></span>
             </div>
             <div class="project__body">
               <h3 class="project__title">Personal AI Telegram Assistant</h3>
@@ -217,26 +221,17 @@
             </div>
           </article>
 
-          <article class="project-card project-card--featured" data-tilt data-category="built">
+          <article class="project-card project-card--featured reveal" data-category="built">
             <div class="project__thumb-wrap">
-              <svg class="project__thumb project__thumb--workflow" viewBox="0 0 100 60" aria-label="Content grid workflow preview">
-                <rect x="12" y="14" w="20" h="16" rx="1" fill="none" stroke="#333" stroke-width="1.5" />
-                <rect x="40" y="14" w="20" h="16" rx="1" fill="none" stroke="#333" stroke-width="1.5" />
-                <rect x="68" y="14" w="20" h="16" rx="1" fill="none" stroke="#333" stroke-width="1.5" />
-                <rect x="12" y="30" w="20" h="16" rx="1" fill="none" stroke="#333" stroke-width="1.5" />
-                <rect x="40" y="30" w="20" h="16" rx="1" fill="none" stroke="#333" stroke-width="1.5" />
-                <rect x="68" y="30" w="20" h="16" rx="1" fill="none" stroke="#333" stroke-width="1.5" />
-                <line x1="22" y1="38" x2="50" y2="38" stroke="#333" stroke-width="1.5" />
-                <line x1="50" y1="38" x2="78" y2="38" stroke="#333" stroke-width="1.5" />
-                <line x1="22" y1="22" x2="22" y2="38" stroke="#333" stroke-width="1.5" />
-                <circle cx="22" cy="22" r="2.5" fill="#E10600" />
-                <circle cx="22" cy="38" r="2.5" fill="#E10600" />
-                <circle cx="50" cy="38" r="2.5" fill="#E10600" />
-                <circle cx="78" cy="38" r="2.5" fill="#E10600" />
-              </svg>
-              <div class="project__overlay">
-                <span class="project__view">View case</span>
-              </div>
+              <img
+                src="assets/projects/instagram.svg"
+                alt="Instagram Content & Growth System workflow illustration"
+                class="work__thumb"
+                width="640"
+                height="360"
+                loading="lazy"
+              />
+              <span class="concept-badge"></span>
             </div>
             <div class="project__body">
               <h3 class="project__title">Instagram Content &amp; Growth System</h3>
@@ -249,20 +244,17 @@
             </div>
           </article>
 
-          <!-- Concept demos -->
-          <article class="project-card project-card--experiment" data-tilt data-category="concept">
+          <article class="project-card project-card--experiment reveal" data-category="concept">
             <div class="project__thumb-wrap">
-              <svg class="project__thumb project__thumb--workflow" viewBox="0 0 100 60" aria-label="WhatsApp auto-reply workflow preview">
-                <path d="M12 22 h30 a4 4 0 0 1 4 4 v14 a4 4 0 0 1 -4 4 h-30 a4 4 0 0 1 -4 -4 v-14 a4 4 0 0 1 4 -4 z" fill="none" stroke="#333" stroke-width="1.5" />
-                <line x1="48" y1="29" x2="56" y2="29" stroke="#333" stroke-width="1.5" />
-                <circle cx="64" cy="29" r="3" fill="#E10600" />
-                <line x1="72" y1="29" x2="80" y2="40" stroke="#333" stroke-width="1.5" />
-                <path d="M88 34 h-30 a4 4 0 0 1 -4 -4 v-12 a4 4 0 0 1 4 -4 h30 a4 4 0 0 1 4 4 v12 a4 4 0 0 1 -4 4 z" fill="none" stroke="#333" stroke-width="1.5" />
-                <circle cx="80" cy="29" r="2.5" fill="#E10600" />
-              </svg>
-              <div class="project__overlay">
-                <span class="project__view">View case</span>
-              </div>
+              <img
+                src="assets/projects/whatsapp-reply.svg"
+                alt="WhatsApp Lead Auto-Reply concept demo illustration"
+                class="work__thumb"
+                width="640"
+                height="360"
+                loading="lazy"
+              />
+              <span class="concept-badge">Concept</span>
             </div>
             <div class="project__body">
               <span class="project__badge">Concept Demo</span>
@@ -276,21 +268,17 @@
             </div>
           </article>
 
-          <article class="project-card project-card--experiment" data-tilt data-category="concept">
+          <article class="project-card project-card--experiment reveal" data-category="concept">
             <div class="project__thumb-wrap">
-              <svg class="project__thumb project__thumb--workflow" viewBox="0 0 100 60" aria-label="Invoice reminder workflow preview">
-                <rect x="12" y="20" w="24" h="20" rx="2" fill="none" stroke="#333" stroke-width="1.5" />
-                <line x1="36" y1="25" x2="36" y2="35" stroke="#333" stroke-width="1.5" />
-                <line x1="36" y1="20" x2="36" y2="40" stroke="#333" stroke-width="1.5" />
-                <line x1="44" y1="29" x2="56" y2="29" stroke="#333" stroke-width="1.5" />
-                <circle cx="64" cy="29" r="3" fill="#E10600" />
-                <line x1="72" y1="29" x2="84" y2="29" stroke="#333" stroke-width="1.5" />
-                <path d="M92 22 h-14 a4 4 0 0 1 -4 -4 v-4 a4 4 0 0 1 4 -4 h14 a4 4 0 0 1 4 4 v4 a4 4 0 0 1 -4 4 z" fill="none" stroke="#333" stroke-width="1.5" />
-                <circle cx="92" cy="29" r="2.5" fill="#E10600" />
-              </svg>
-              <div class="project__overlay">
-                <span class="project__view">View case</span>
-              </div>
+              <img
+                src="assets/projects/invoice-reminder.svg"
+                alt="Invoice Reminder Automation concept demo illustration"
+                class="work__thumb"
+                width="640"
+                height="360"
+                loading="lazy"
+              />
+              <span class="concept-badge">Concept</span>
             </div>
             <div class="project__body">
               <span class="project__badge">Concept Demo</span>
@@ -304,20 +292,17 @@
             </div>
           </article>
 
-          <article class="project-card project-card--experiment" data-tilt data-category="concept">
+          <article class="project-card project-card--experiment reveal" data-category="concept">
             <div class="project__thumb-wrap">
-              <svg class="project__thumb project__thumb--workflow" viewBox="0 0 100 60" aria-label="Content report workflow preview">
-                <rect x="12" y="20" w="24" h="20" rx="2" fill="none" stroke="#333" stroke-width="1.5" />
-                <line x1="36" y1="30" x2="46" y2="30" stroke="#333" stroke-width="1.5" />
-                <circle cx="54" cy="30" r="3" fill="#E10600" />
-                <line x1="62" y1="30" x2="72" y2="20" stroke="#333" stroke-width="1.5" />
-                <line x1="72" y1="20" x2="72" y2="40" stroke="#333" stroke-width="1.5" />
-                <rect x="80" y="22" w="18" h="16" rx="2" fill="none" stroke="#333" stroke-width="1.5" />
-                <circle cx="80" cy="30" r="2.5" fill="#E10600" />
-              </svg>
-              <div class="project__overlay">
-                <span class="project__view">View case</span>
-              </div>
+              <img
+                src="assets/projects/weekly-report.svg"
+                alt="Weekly Content Report Generator concept demo illustration"
+                class="work__thumb"
+                width="640"
+                height="360"
+                loading="lazy"
+              />
+              <span class="concept-badge">Concept</span>
             </div>
             <div class="project__body">
               <span class="project__badge">Concept Demo</span>
@@ -334,7 +319,7 @@
       </div>
     </section>
 
-    <div class="next-page">
+    <div class="next-page reveal">
       <a href="cv.html" class="next-page__link">Next: CV<span class="next-page__arrow">→</span></a>
     </div>
   </main>
@@ -365,14 +350,6 @@
       </div>
     </div>
   </footer>
-
-  <div class="whatsapp-float" aria-hidden="true">
-    <span>💬</span>
-    <span>WhatsApp</span>
-  </div>
-
-  <div id="cursor" class="cursor" aria-hidden="true"></div>
-  <div id="cursorFollower" class="cursor-follower" aria-hidden="true"></div>
 
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js" defer></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js" defer></script>
