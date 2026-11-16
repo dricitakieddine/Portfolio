@@ -8,13 +8,6 @@ const $$ = (sel, root = document) => Array.from(root.querySelectorAll(sel));
 
 const prefersReduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
-/* ---------- Add 'js' class to html (progressive enhancement safety net) ---------- */
-try {
-  document.documentElement.classList.add("js");
-} catch (e) {
-  // ignore
-}
-
 /* ---------- Intro overlay (first session visit, under 1.2s) ---------- */
 function initIntro() {
   try {
@@ -76,6 +69,7 @@ function initIntro() {
 /* ---------- Reveal on scroll (fade up) ---------- */
 function initReveal() {
   try {
+    document.documentElement.classList.add("js-ready-timeout");
     const elements = $$(".reveal");
 
     if (!window.gsap || !window.ScrollTrigger) {

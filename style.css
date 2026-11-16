@@ -1819,7 +1819,7 @@ body.menu-locked .whatsapp-float,
 }
 
 /* ---------- Reveal on scroll ---------- */
-.js .reveal:not(.is-visible) {
+.js:not(.js-ready-timeout) .reveal:not(.is-visible) {
   opacity: 0;
   transform: translatey(16px);
 }
