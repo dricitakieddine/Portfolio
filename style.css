@@ -2204,11 +2204,6 @@ body.menu-locked .whatsapp-float,
     color: var(--accent);
   }
 
-  .mobile-menu__number {
-    margin-right: 0.75rem;
-    color: var(--accent);
-  }
-
   .mobile-menu__contact {
     padding: 1.5rem;
     border-top: 1px solid var(--border);
