@@ -1,65 +1,86 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 500" width="800" height="500" role="img" aria-label="WhatsApp auto-reply concept demo illustration">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 500" width="800" height="500" role="img" aria-label="WhatsApp Lead Auto-Reply concept demo illustration">
   <defs>
-    <style>
-      .node { fill: #1B2226; stroke: #E10600; stroke-width: 2; }
-      .node.pulse { animation: pulse 2s ease-in-out infinite; }
-      .line { fill: none; stroke: #333; stroke-width: 2; }
-      .line.draw { stroke-dasharray: 100; stroke-dashoffset: 100; animation: drawLine 1s ease-out forwards; }
-      .text { font-family: system-ui, -apple-system, Segoe UI, Roboto, sans-serif; font-size: 12px; fill: #F2F4F5; }
-      .text-muted { fill: #8A9499; font-size: 11px; }
-      .bubble-in { fill: #25D366; }
-      .bubble-out { fill: #161C1F; stroke: #222; stroke-width: 1; }
-      .badge { fill: #E10600; }
-      @keyframes pulse {
-        0%, 100% { r: 6; opacity: 1; }
-        50% { r: 9; opacity: 0.6; }
-      }
-      @keyframes drawLine {
-        to { stroke-dashoffset: 0; }
-      }
-      @media (prefers-reduced-motion: reduce) {
-        .node.pulse { animation: none; r: 6; opacity: 1; }
-        .line.draw { stroke-dashoffset: 0; animation: none; }
-      }
-    </style>
+    <linearGradient id="bgGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#0B3D2E;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#101517;stop-opacity:1" />
+    </linearGradient>
+    <linearGradient id="cardGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#161C1F;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#0E141E;stop-opacity:1" />
+    </linearGradient>
+    <filter id="glow" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur stdDeviation="12" result="blur" />
+      <feComposite in="SourceGraphic" in2="blur" operator="over" />
+    </filter>
+    <filter id="softShadow" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur stdDeviation="8" result="blur" />
+      <feOffset dx="0" dy="4" in="blur" result="offsetBlur" />
+      <feComponentTransfer in="offsetBlur"><feFuncA type="linear" slope="0.3" /></feComponentTransfer>
+      <feMerge><feMergeNode /><feMergeNode in="offsetBlur" /><feMergeNode in="SourceGraphic" /></feMerge>
+    </filter>
   </defs>
 
-  <!-- Card background -->
-  <rect x="0" y="0" width="800" height="500" rx="16" fill="#101517" stroke="#1A1A1A" stroke-width="1"/>
-  <rect x="30" y="20" width="120" height="26" rx="6" fill="#E10600" opacity="0.1" stroke="#E10600" stroke-width="1"/>
-  <text x="50" y="39" class="text" style="fill:#E10600; font-size:10px; font-weight:700; letter-spacing:0.1em;">Concept</text>
+  <rect width="800" height="500" fill="url(#bgGrad)" />
+  <rect width="800" height="500" fill="none" stroke="rgba(255,255,255,0.03)" stroke-width="1" />
+  <circle cx="660" cy="90" r="110" fill="#25D366" opacity="0.12" filter="blur(40px)" />
+  <circle cx="140" cy="390" r="100" fill="#128C7E" opacity="0.08" filter="blur(40px)" />
 
-  <!-- Left: chat -->
-  <rect x="50" y="100" width="300" height="340" rx="16" fill="#0A0A0A"/>
-  <rect x="60" y="120" width="280" height="40" fill="#161C1F"/>
-  <text x="80" y="140" class="text">Inbound lead</text>
+  <!-- Left: Chat interface -->
+  <rect x="50" y="120" width="320" height="340" rx="16" fill="#0A0A0A" stroke="#222" stroke-width="2" />
+  <rect x="60" y="130" width="300" height="40" rx="8" fill="#161C1F" />
+  <text x="75" y="150" font-family="system-ui, sans-serif" font-size="14" font-weight="700" fill="#F2F4F5">Inbound Lead</text>
 
-  <!-- incoming bubble -->
-  <rect x="80" y="190" width="120" height="44" rx="10" class="bubble-out"/>
-  <text x="100" y="210" class="text-muted">Interested in your service</text>
-  <text x="100" y="224" class="text-muted">— can you help?</text>
+  <!-- Incoming lead message -->
+  <rect x="80" y="190" width="150" height="44" rx="10" fill="#161C1F" stroke="#222" stroke-width="1" />
+  <text x="95" y="212" font-family="system-ui, sans-serif" font-size="12" fill="#F2F4F5">Hi! Interested in your</text>
+  <text x="95" y="224" font-family="system-ui, sans-serif" font-size="12" fill="#F2F4F5">service. Can you help?</text>
 
-  <!-- auto-reply bubble -->
-  <rect x="80" y="260" width="140" height="44" rx="10" class="bubble-in"/>
-  <text x="100" y="280" class="text">Thanks! Here's how it works…</text>
+  <!-- Auto-reply bubble -->
+  <rect x="80" y="260" width="170" height="56" rx="10" fill="#25D366" />
+  <text x="95" y="280" font-family="system-ui, sans-serif" font-size="12" fill="#0A0A0A">Thanks for reaching out!</text>
+  <text x="95" y="294" font-family="system-ui, sans-serif" font-size="11" fill="#0A0A0A">I'll send our pricing and</text>
+  <text x="95" y="304" font-family="system-ui, sans-serif" font-size="11" fill="#0A0A0A">booking info right away.</text>
 
-  <!-- Connector: chat -> n8n -->
-  <line class="line draw" x1="370" y1="270" x2="440" y2="270"/>
+  <!-- Connector -->
+  <line x1="230" y="290" x2="400" y="290" stroke="#333" stroke-width="2" />
+  <circle cx="400" cy="290" r="4" fill="#25D366" />
 
-  <!-- Node: n8n -->
-  <circle cx="450" cy="270" r="8" class="node pulse"/>
-  <text x="466" y="275" class="text-muted">n8n</text>
-
-  <!-- Connector: n8n -> WhatsApp -->
-  <line class="line draw" x1="458" y1="270" x2="540" y2="270"/>
-
-  <!-- Node: WhatsApp -->
-  <circle cx="550" cy="270" r="8" class="node pulse"/>
-  <text x="566" y="275" class="text-muted">WhatsApp</text>
-
-  <!-- Right: note -->
-  <rect x="620" y="220" width="150" height="120" rx="12" fill="#161C1F" stroke="#222" stroke-width="1"/>
-  <text x="640" y="250" class="text-muted">Auto-reply sent instantly</text>
-  <text x="640" y="270" class="text">Lead engaged</text>
-  <rect x="640" y="290" width="110" height="10" rx="4" fill="#222"/>
+  <!-- Right: Automation flow -->
+  <g transform="translate(420, 160)">
+    <rect x="0" y="0" width="260" height="300" rx="12" fill="#161C1F" stroke="#222" stroke-width="1" />
+    <text x="20" y="25" font-family="system-ui, sans-serif" font-size="13" font-weight="700" fill="#F2F4F5">n8n Workflow</text>
+    
+    <!-- Node 1: Webhook -->
+    <rect x="20" y="60" width="120" height="60" rx="8" fill="#101517" stroke="#222" stroke-width="1" />
+    <circle cx="30" cy="40" r="8" fill="#25D366" />
+    <text x="50" y="45" text-anchor="middle" font-family="system-ui, sans-serif" font-size="11" fill="#F2F4F5">Webhook</text>
+    
+    <!-- Line -->
+    <line x1="120" y="30" x2="150" y="25" stroke="#333" stroke-width="2" />
+    <circle cx="158" cy="25" r="4" fill="#25D366" />
+    
+    <!-- Node 2: Filter -->
+    <rect x="160" y="0" width="120" height="60" rx="8" fill="#101C1F" stroke="#222" stroke-width="1" />
+    <circle cx="170" cy="30" r="8" fill="#25D366" />
+    <text x="190" y="35" text-anchor="middle" font-family="system-ui, sans-serif" font-size="11" fill="#F2F4F5">Filter</text>
+    
+    <!-- Line -->
+    <line x1="280" y="30" x2="290" y="25" stroke="#333" stroke-width="2" />
+    <circle cx="298" cy="25" r="4" fill="#25D366" />
+    
+    <!-- Node 3: WhatsApp -->
+    <rect x="300" y="0" width="120" height="60" rx="8" fill="#101517" stroke="#222" stroke-width="1" />
+    <circle cx="310" cy="30" r="8" fill="#25D366" />
+    <text x="330" y="35" text-anchor="middle" font-family="system-ui, sans-serif" font-size="11" fill="#F2F4F5">WhatsApp</text>
+    
+    <!-- Result badge -->
+    <rect x="20" y="120" width="220" height="60" rx="8" fill="#101517" stroke="#25D366" stroke-width="1" />
+    <text x="30" y="140" font-family="system-ui, sans-serif" font-size="13" fill="#25D366" font-weight="700">✓ Auto-reply sent</text>
+    <text x="30" y="156" font-family="system-ui, sans-serif" font-size="11" fill="#F2F4F5">Lead engaged within 30 seconds</text>
+  </g>
+  
+  <!-- Concept badge -->
+  <rect x="50" y="320" width="130" height="34" rx="8" fill="#161C1F" stroke="#25D366" stroke-width="1" />
+  <text x="65" y="340" font-family="system-ui, sans-serif" font-size="11" font-weight="700" fill="#25D366" letter-spacing="0.1em" text-transform="uppercase">Concept</text>
+  <text x="70" cy="320" y="355" font-family="system-ui, sans-serif" font-size="10" fill="#8A9499">Concept demo · No live results</text>
 </svg>
